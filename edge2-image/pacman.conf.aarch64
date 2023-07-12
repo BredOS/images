@@ -1,0 +1,52 @@
+# /etc/pacman.conf
+# 
+# 
+# See the pacman.conf(5) manpage for option and repository directives
+
+# 
+# GENERAL OPTIONS
+# 
+[options]
+# IgnorePkg = 
+# RootDir = /
+# DBPath = /var/lib/pacman/
+# CacheDir = /var/cache/pacman/pkg/
+# LogFile = /var/log/pacman.log
+# GPGDir = /etc/pacman.d/gnupg/
+# HookDir = /etc/pacman.d/hooks/
+HoldPkg = pacman glibc
+# XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+# XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+# CleanMethod = KeepInstalled
+Architecture = aarch64
+# IgnorePkg = 
+# IgnoreGroup = 
+# NoUpgrade = 
+# NoExtract = 
+# UseSyslog
+Color
+# NoProgressBar
+CheckSpace
+# VerbosePkgLists
+ParallelDownloads = 5
+SigLevel = Required DatabaseOptional
+LocalFileSigLevel = Optional
+# RemoteFileSigLevel = Required
+
+[BredOS]
+Include = /etc/pacman.d/bredos-mirrorlist
+
+[core]
+Server = http://dk.mirror.archlinuxarm.org/$arch/$repo
+
+[extra]
+Server = http://dk.mirror.archlinuxarm.org/$arch/$repo
+
+[community]
+Server = http://dk.mirror.archlinuxarm.org/$arch/$repo
+
+[alarm]
+Server = http://dk.mirror.archlinuxarm.org/$arch/$repo
+
+[aur]
+Server = http://dk.mirror.archlinuxarm.org/$arch/$repo

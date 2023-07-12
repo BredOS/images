@@ -1,0 +1,11 @@
+[Unit]
+Description=Zram-based swap (compressed RAM block devices)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/zswap-arm-ctrl start
+ExecStop=/usr/bin/zswap-arm-ctrl stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

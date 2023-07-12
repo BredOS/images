@@ -1,0 +1,63 @@
+base
+networkmanager
+network-manager-applet
+nano
+lm_sensors
+archlinux-keyring
+archlinuxarm-keyring
+btrfs-progs
+bluez
+fish
+sudo
+polkit
+bluez-utils
+rock5b-post-install
+#f2fs-tools
+linux-rockchip-rk3588
+linux-rockchip-rk3588-headers
+mesa-panfork-git
+libdrm
+bred-skel-default
+uboot-tools
+#firmware-raspberrypi
+#raspberrypi-bootloader
+linux-firmware
+linux-firmware-whence
+lsb-release
+xf86-video-fbdev
+xorg-server
+bred-os-release
+parted
+gvfs
+pipewire-pulse
+#pipewire-media-session
+pipewire-alsa
+pipewire-jack
+bredos-keyring
+bredos-mirrorlist
+dosfstools
+e2fsprogs
+firefox
+calamares
+calamares-conf-rock5b
+neofetch
+mali-G610-firmware
+# update-extlinux
+blueman
+cpupower
+# ===
+# GUI
+# ===
+cinnamon
+gnome-terminal
+lightdm
+xorg
+hicolor-icon-theme
+lightdm-slick-greeter
+noto-fonts
+gedit
+gnome-system-monitor
+mint-themes
+mint-y-icons
+# mintlocale
+engrampa

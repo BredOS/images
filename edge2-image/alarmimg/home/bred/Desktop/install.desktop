@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Install BredOS
+GenericName=BredOS Installer
+Exec=pkexec /usr/bin/calamares -d | sudo tee /var/log/calamares.log
+Comment=Calamares — Installer for BredOS
+Keywords=calamares;system;install;installer
+Icon=/etc/calamares/branding/bred/bred-logo.jpg
+Terminal=false
+Categories=Qt;System;
+StartupWMClass=calamares
+StartupNotify=True
