@@ -1,0 +1,34 @@
+#! /usr/bin/env python
+from time import strftime
+
+img_version = strftime("%Y-%m-%d")
+edition = ""
+device = "rock4c-plus"  # rpi more will be added soon
+arch = "aarch64"  # aarch64, armv7h
+img_name = "BredOS-ARM-rock4c-plus-" + img_version
+install_dir = "arch"
+fs = "ext4"  # ext4 or btrfs
+img_type = "image"  # image (img.xz) or rootfs (tar.gz)
+img_backend = "loop"  # loop or qemu-nbd
+
+# append root=PARTUUID=XXXXXX-02 + CMDLINE will always be added to the kernel command line
+# if you use btrfs you need add rootflags=subvol=@ rootfstype=btrfs
+cmdline = "console=ttyAML0,115200n8 console=ttyS2,1500000n8 console=ttyFIQ0,1500000n8 console=tty1 consoleblank=0 loglevel=0 panic=10 rootwait rw init=/sbin/init rootfstype=ext4 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory swapaccount=1 irqchip.gicv3_pseudo_nmi=0 switolb=1 coherent_pool=2M"
+configtxt = """label BredOS ARM
+    kernel /vmlinux-rockchip64
+    initrd /initramfs-linux-rockchip64.img
+    devicetreedir /dtbs/
+
+"""
+partition_table = lambda img_size, fs: {
+    "uboot": ["0%", "32Mib", "32Mib", "NONE"],
+    "boot": ["32Mib", "150M", "118Mib", "fat32"],
+    "primary": ["150M", "100%", str(int(img_size / 1000) - 150) + "M", fs],
+}
+
+partition_extras = lambda config_dir, disk: [
+    ["mkfs.fat", "-v", "-F32", "-n", "BOOT", disk + "p1"],
+    ["dd", "if=" + config_dir + "idbloader.img", "of=" + disk, "bs=512", "seek=64"],
+    ["dd", "if=" + config_dir + "uboot.img", "of=" + disk, "bs=512", "seek=16384"],
+    ["dd", "if=" + config_dir + "trust.img", "of=" + disk, "bs=512", "seek=24576"],
+]
