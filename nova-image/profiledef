@@ -1,7 +1,7 @@
 #! /usr/bin/env python
-import time
+from time import strftime
 
-img_version=time.strftime("%Y-%m-%d")
+img_version = strftime("%Y-%m-%d")
 edition=""
 device="rock5b" # rpi more will be added soon
 arch="aarch64" # aarch64, armv7h
@@ -19,3 +19,11 @@ label BredOS ARM
     initrd /initramfs-linux-rockchip-rk3588.img
     fdt /dtbs/rockchip/rk3588s-9tripod-linux.dtb
 '''
+partition_table = lambda img_size, fs: {
+    "boot": ["0%", "150M", "150M", "fat32"],
+    "primary": ["150M", "100%", str(int(img_size / 1000) - 150) + "M", fs],
+}
+
+partition_extras = lambda config_dir, disk: [
+    ["mkfs.fat", "-v", "-F32", "-n", "BOOT", disk + "p1"],
+]

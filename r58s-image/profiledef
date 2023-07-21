@@ -19,3 +19,11 @@ label BredOS ARM
     initrd /initramfs-linux-rockchip.img
     fdt /dtbs/rockchip/rk3588-blueberry-minipc-linux.dtb
 '''
+partition_table = lambda img_size, fs: {
+    "boot": ["0%", "150M", "150M", "fat32"],
+    "primary": ["150M", "100%", str(int(img_size / 1000) - 150) + "M", fs],
+}
+
+partition_extras = lambda config_dir, disk: [
+    ["mkfs.fat", "-v", "-F32", "-n", "BOOT", disk + "p1"],
+]
