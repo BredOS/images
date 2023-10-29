@@ -32,3 +32,18 @@ partition_table = lambda img_size, fs: {
 partition_extras = lambda config_dir, disk: [
     ["mkfs.fat", "-v", "-F32", "-n", "BOOT", disk + "p1"],
 ]
+
+perms = {
+    "/etc/": ["0", "0", "755"],
+    "/usr/bin/resizefs": ["0", "0", "755"],
+    "/usr/bin/zswap-arm-ctrl": ["0", "0", "755"],
+    "/usr/bin/oemcleanup": ["0", "0", "755"],
+    "/etc/polkit-1/rules.d": ["0", "0", "750"],
+    "/etc/sudoers.d": ["0", "0", "750"],
+    "/usr/lib": ["0", "0", "755"],
+    "/usr/bin": ["0", "0", "755"],
+    "/usr": ["0", "0", "755"],
+    "/usr/bin/remove-calamares": ["0", "0", "755"],
+    "/home/bred/": ["1001", "1001", "750"],
+    "/home": ["0", "0", "755"],
+}
