@@ -24,10 +24,28 @@ configtxt = """label BredOS ARM
 """
 
 partition_table = lambda img_size, fs: {
-    "boot": ["0%", "150M", "150M", "fat32"],
+    "uboot": ["0%", "16M", "16M", "NONE"],
+    "boot": ["16M", "150M", "134M", "fat32"],
     "primary": ["150M", "100%", str(int(img_size / 1000) - 150) + "M", fs],
 }
 
 partition_extras = lambda config_dir, disk: [
     ["mkfs.fat", "-v", "-F32", "-n", "BOOT", disk + "p1"],
+    ["dd", "if=" + config_dir + "idbloader.img", "of=" + disk, "bs=512", "seek=64"],
+    ["dd", "if=" + config_dir + "u-boot.itb", "of=" + disk, "bs=512", "seek=16384"],
 ]
+
+perms = {
+    "/etc/": ["0", "0", "755"],
+    "/usr/bin/resizefs": ["0", "0", "755"],
+    "/usr/bin/zswap-arm-ctrl": ["0", "0", "755"],
+    "/usr/bin/oemcleanup": ["0", "0", "755"],
+    "/etc/polkit-1/rules.d": ["0", "0", "750"],
+    "/etc/sudoers.d": ["0", "0", "750"],
+    "/usr/lib": ["0", "0", "755"],
+    "/usr/bin": ["0", "0", "755"],
+    "/usr": ["0", "0", "755"],
+    "/usr/bin/remove-calamares": ["0", "0", "755"],
+    "/home/bred/": ["1001", "1001", "750"],
+    "/home": ["0", "0", "755"],
+}

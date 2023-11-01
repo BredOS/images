@@ -37,8 +37,8 @@ bredos-mirrorlist
 dosfstools
 e2fsprogs
 firefox
-calamares
-calamares-conf-rock5b
+# calamares
+# calamares-conf-rock5b
 neofetch
 mali-G610-firmware
 # update-extlinux

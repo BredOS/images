@@ -1,0 +1,13 @@
+[Unit]
+Description=Initializes Pacman keyring
+Before=sshd.service cloud-final.service
+# ConditionFirstBoot=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=/usr/bin/pacman-key --init
+ExecStart=/usr/bin/pacman-key --populate
+
+[Install]
+WantedBy=multi-user.target
