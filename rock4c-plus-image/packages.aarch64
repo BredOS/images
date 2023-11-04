@@ -11,8 +11,8 @@ fish
 sudo
 polkit
 bluez-utils
-linux-rockchip64
-linux-rockchip64-headers
+linux-aarch64
+linux-aarch64-headers
 mesa-panfork-git
 libdrm
 bred-skel-default
