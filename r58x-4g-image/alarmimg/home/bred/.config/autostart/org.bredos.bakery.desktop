@@ -1,1 +1,9 @@
-/usr/share/applications/org.bredos.bakery.desktop
+[Desktop Entry]
+Name=BredOS Installer
+Exec=Bakery --gui
+Icon=org.bredos.bakery
+Terminal=false
+Type=Application
+Categories=GTK;System;Utility;
+StartupNotify=true
+StartupWMClass=org.bredos.bakery

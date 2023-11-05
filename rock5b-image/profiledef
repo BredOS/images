@@ -46,7 +46,8 @@ perms = {
     "/usr/lib": ["0", "0", "755"],
     "/usr/bin": ["0", "0", "755"],
     "/usr": ["0", "0", "755"],
-    "/usr/bin/remove-calamares": ["0", "0", "755"],
+    "/home/bred/.config/autostart/org.bredos.bakery.desktop": ["1001", "1001", "755"],
+    "/home/bred/Desktop/org.bredos.bakery.desktop": ["1001", "1001", "755"],
     "/home/bred/": ["1001", "1001", "750"],
     "/home": ["0", "0", "755"],
 }
