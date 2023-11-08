@@ -1,3 +1,7 @@
+# ====
+# CORE
+# ====
+
 base
 networkmanager
 network-manager-applet
@@ -38,13 +42,20 @@ bredos-mirrorlist
 dosfstools
 e2fsprogs
 firefox
-# calamares
-# calamares-conf-rock5b
 neofetch
 mali-G610-firmware
 # update-extlinux
 blueman
 cpupower
+
+# ======
+# BAKERY
+# ======
+
+gnu-netcat
+bakery
+bakery-gui
+
 # ===
 # GUI
 # ===
