@@ -3,6 +3,7 @@
 # ====
 
 base
+base-devel
 networkmanager
 network-manager-applet
 nano
