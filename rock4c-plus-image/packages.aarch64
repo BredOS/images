@@ -4,6 +4,7 @@
 
 base
 base-devel
+yay
 networkmanager
 network-manager-applet
 nano
