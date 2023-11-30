@@ -33,7 +33,7 @@ bred-os-release
 parted
 gvfs
 pipewire-pulse
-#pipewire-media-session
+wireplumber
 pipewire-alsa
 pipewire-jack
 bredos-keyring
@@ -57,15 +57,4 @@ bakery-gui
 # ===
 # GUI
 # ===
-cinnamon
-gnome-terminal
-lightdm
-xorg
-hicolor-icon-theme
-lightdm-slick-greeter
-noto-fonts
-gedit
-gnome-system-monitor
-mint-themes
-mint-y-icons
-engrampa
+plasma-meta
