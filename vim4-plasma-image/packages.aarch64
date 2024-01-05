@@ -1,0 +1,107 @@
+# ====
+# CORE
+# ====
+
+base
+base-devel
+yay
+networkmanager
+network-manager-applet
+nano
+lm_sensors
+archlinux-keyring
+archlinuxarm-keyring
+btrfs-progs
+bluez
+fish
+sudo
+polkit
+bluez-utils
+vim4-post-install
+linux-vim4
+linux-vim4-headers
+mesa
+libdrm
+bred-skel-default
+uboot-tools
+linux-firmware
+linux-firmware-whence
+lsb-release
+xf86-video-fbdev
+xorg-server
+bred-os-release
+parted
+gvfs
+pipewire-pulse
+wireplumber
+pipewire-alsa
+pipewire-jack
+bredos-keyring
+bredos-mirrorlist
+dosfstools
+e2fsprogs
+firefox
+neofetch
+update-extlinux
+
+# ======
+# BAKERY
+# ======
+
+gnu-netcat
+bakery
+bakery-gui
+python-requests
+
+# ===
+# GUI
+# ===
+
+kde-cli-tools
+kde-gtk-config
+kdeclarative5
+kdeconnect
+kdecoration
+kded5
+kdelibs4support
+kdeplasma-addons
+kdesu5
+libblockdev
+polkit-kde-agent
+xdg-desktop-portal-kde
+plasma-browser-integration
+plasma-desktop
+plasma-framework5
+plasma-integration
+plasma-nm
+plasma-pa
+plasma-workspace
+plasma-workspace-wallpapers
+xdg-desktop-portal
+xdg-desktop-portal-xapp
+konsole
+kate
+bluedevil
+drkonqi
+kde-gtk-config
+kdeplasma-addons
+khotkeys
+kinfocenter
+kscreen
+ksshaskpass
+kwrited
+oxygen
+oxygen-sounds
+plasma-browser-integration
+plasma-disks
+plasma-firewall
+plasma-workspace-wallpapers
+plasma-systemmonitor
+plasma-vault
+kwayland-integration
+kwallet-pam
+kgamma
+breeze-gtk
+powerdevil
+kpipewire
+gdm
