@@ -18,6 +18,7 @@ sudo
 polkit
 bluez-utils
 vim4-post-install
+firmware-vim4
 linux-vim4
 linux-vim4-headers
 mesa
