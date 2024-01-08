@@ -35,6 +35,8 @@ partition_extras = lambda config_dir, disk: [
     print()
 ]
 
+uboot_commands = lambda config_dir, disk: []
+
 perms = {
     "/etc/": ["0", "0", "755"],
     "/usr/bin/resizefs": ["0", "0", "755"],

@@ -31,7 +31,7 @@ partition_extras = lambda config_dir, disk: [
     ["mkfs.fat", "-v", "-F32", "-n", "BOOT", disk + "p1"],
 ]
 
-uboot = lambda config_dir, disk: [
+uboot_commands = lambda config_dir, disk: [
     ["dd", "if=" + config_dir + "/u-boot.bin.sd.bin.signed", "of=" + disk, "conv=fsync,notrunc", "bs=512", "seek=1"],
     ["dd", "if=" + config_dir + "/u-boot.bin.sd.bin.signed", "of=" + disk, "conv=fsync,notrunc", "bs=512", "skip=1", "seek=1"],
 ]

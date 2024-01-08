@@ -32,6 +32,8 @@ partition_extras = lambda config_dir, disk: [
     ["mkfs.fat", "-v", "-F32", "-n", "BOOT", disk + "p1"],
 ]
 
+uboot_commands = lambda config_dir, disk: []
+
 perms = {
     "/etc/": ["0", "0", "755"],
     "/usr/bin/resizefs": ["0", "0", "755"],
