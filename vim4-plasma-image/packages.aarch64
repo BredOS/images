@@ -49,60 +49,60 @@ update-extlinux
 # BAKERY
 # ======
 
-gnu-netcat
-bakery
-bakery-gui
-python-requests
+# gnu-netcat
+# bakery
+# bakery-gui
+# python-requests
 
 # ===
 # GUI
 # ===
 
-kde-cli-tools
-kde-gtk-config
-kdeclarative5
-kdeconnect
-kdecoration
-kded5
-kdelibs4support
-kdeplasma-addons
-kdesu5
-libblockdev
-polkit-kde-agent
-xdg-desktop-portal-kde
-plasma-browser-integration
-plasma-desktop
-plasma-framework5
-plasma-integration
-plasma-nm
-plasma-pa
-plasma-workspace
-plasma-workspace-wallpapers
-xdg-desktop-portal
-xdg-desktop-portal-xapp
-konsole
-kate
-bluedevil
-drkonqi
-kde-gtk-config
-kdeplasma-addons
-khotkeys
-kinfocenter
-kscreen
-ksshaskpass
-kwrited
-oxygen
-oxygen-sounds
-plasma-browser-integration
-plasma-disks
-plasma-firewall
-plasma-workspace-wallpapers
-plasma-systemmonitor
-plasma-vault
-kwayland-integration
-kwallet-pam
-kgamma
-breeze-gtk
-powerdevil
-kpipewire
-gdm
+# kde-cli-tools
+# kde-gtk-config
+# kdeclarative5
+# kdeconnect
+# kdecoration
+# kded5
+# kdelibs4support
+# kdeplasma-addons
+# kdesu5
+# libblockdev
+# polkit-kde-agent
+# xdg-desktop-portal-kde
+# plasma-browser-integration
+# plasma-desktop
+# plasma-framework5
+# plasma-integration
+# plasma-nm
+# plasma-pa
+# plasma-workspace
+# plasma-workspace-wallpapers
+# xdg-desktop-portal
+# xdg-desktop-portal-xapp
+# konsole
+# kate
+# bluedevil
+# drkonqi
+# kde-gtk-config
+# kdeplasma-addons
+# khotkeys
+# kinfocenter
+# kscreen
+# ksshaskpass
+# kwrited
+# oxygen
+# oxygen-sounds
+# plasma-browser-integration
+# plasma-disks
+# plasma-firewall
+# plasma-workspace-wallpapers
+# plasma-systemmonitor
+# plasma-vault
+# kwayland-integration
+# kwallet-pam
+# kgamma
+# breeze-gtk
+# powerdevil
+# kpipewire
+# gdm

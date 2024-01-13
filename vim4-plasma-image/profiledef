@@ -11,6 +11,7 @@ fs = "btrfs"  # ext4 or btrfs
 img_type = "image"  # image (img.xz) or rootfs (tar.gz)
 img_backend = "loop"  # loop or qemu-nbd
 use_gpt = False
+boot_set_esp = False
 
 # If you use btrfs you need add `rootflags=subvol=@ rootfstype=btrfs`
 # And remove `rootfstype=ext4`
@@ -24,14 +25,19 @@ configtxt = """label BredOS ARM
 """
 
 partition_table = lambda img_size, fs: {
-    "boot": ["20M", "150M", "130M", "ext4"],
-    "primary": ["150M", "100%", str(int(img_size / 1000) - 150) + "M", fs],
+    "boot": ["70M", "200M", "130M", "fat32"],
+    "primary": ["200M", str(int(img_size / 1000) - 1) + "M", str(int(img_size / 1000) - 201) + "M", fs],
 }
 
-partition_extras = lambda config_dir, disk: [
-    ["dd", "if=" + config_dir + "/u-boot.bin.sd.bin.signed", "of=" + disk, "conv=fsync,notrunc", "bs=16", "skip=2", "seek=2", "count=7", "status=progress"],
-    ["dd", "if=" + config_dir + "/u-boot.bin.sd.bin.signed", "of=" + disk, "conv=fsync,notrunc", "bs=16", "skip=32", "seek=32", "status=progress"],
+partition_prefix = lambda config_dir, disk: []
+
+partition_suffix = lambda config_dir, disk: [
+    #["dd", "if=" + config_dir + "/u-boot.bin.sd.bin.signed", "of=" + disk, "conv=fsync,notrunc", "bs=16", "skip=2", "seek=2", "count=7", "status=progress"],
+    #["dd", "if=" + config_dir + "/u-boot.bin.sd.bin.signed", "of=" + disk, "conv=fsync,notrunc", "bs=16", "skip=32", "seek=32", "status=progress"],
     ["mkfs.ext4", "-F", "-L", "BOOT", disk + "p1"],
+    ["bash", "-c", "gdisk " + disk + " <<-EOF\nr\nh\n1\nn\n07\nn\nn\nw\ny\nEOF\n"],
+    ["dd", "if=" + config_dir + "/u-boot.bin.sd.bin.signed", "of=" + disk, "conv=fsync,notrunc", "bs=442", "count=1", "status=progress"],
+    ["dd", "if=" + config_dir + "/u-boot.bin.sd.bin.signed", "of=" + disk, "conv=fsync,notrunc", "bs=512", "skip=1", "seek=1", "status=progress"],
 ]
 
 uboot_commands = lambda config_dir, disk: []

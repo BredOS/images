@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = /usr/bin/baloo_file
+
+[Action]
+Description = Disable gnome in GDM
+When = PostTransaction
+Exec = /bin/sh -c 'mv /usr/bin/baloo_file /usr/bin/baloo_file.bak'
