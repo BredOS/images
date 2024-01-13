@@ -30,13 +30,11 @@ partition_table = lambda img_size, fs: {
     "primary": ["150M", "100%", str(int(img_size / 1000) - 150) + "M", fs],
 }
 
-partition_extras = lambda config_dir, disk: [
+partition_suffix = lambda config_dir, disk: [
     ["mkfs.fat", "-v", "-F32", "-n", "BOOT", disk + "p1"],
     ["dd", "if=" + config_dir + "idbloader.img", "of=" + disk, "bs=512", "seek=64"],
     ["dd", "if=" + config_dir + "u-boot.itb", "of=" + disk, "bs=512", "seek=16384"],
 ]
-
-uboot_commands = lambda config_dir, disk: []
 
 perms = {
     "/etc/": ["0", "0", "755"],

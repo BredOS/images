@@ -29,18 +29,12 @@ partition_table = lambda img_size, fs: {
     "primary": ["200M", str(int(img_size / 1000) - 1) + "M", str(int(img_size / 1000) - 201) + "M", fs],
 }
 
-partition_prefix = lambda config_dir, disk: []
-
 partition_suffix = lambda config_dir, disk: [
-    #["dd", "if=" + config_dir + "/u-boot.bin.sd.bin.signed", "of=" + disk, "conv=fsync,notrunc", "bs=16", "skip=2", "seek=2", "count=7", "status=progress"],
-    #["dd", "if=" + config_dir + "/u-boot.bin.sd.bin.signed", "of=" + disk, "conv=fsync,notrunc", "bs=16", "skip=32", "seek=32", "status=progress"],
     ["mkfs.ext4", "-F", "-L", "BOOT", disk + "p1"],
-    ["bash", "-c", "gdisk " + disk + " <<-EOF\nr\nh\n1\nn\n07\nn\nn\nw\ny\nEOF\n"],
+    #["bash", "-c", "gdisk " + disk + " <<-EOF\nr\nh\n1\nn\n07\nn\nn\nw\ny\nEOF\n"],
     ["dd", "if=" + config_dir + "/u-boot.bin.sd.bin.signed", "of=" + disk, "conv=fsync,notrunc", "bs=442", "count=1", "status=progress"],
     ["dd", "if=" + config_dir + "/u-boot.bin.sd.bin.signed", "of=" + disk, "conv=fsync,notrunc", "bs=512", "skip=1", "seek=1", "status=progress"],
 ]
-
-uboot_commands = lambda config_dir, disk: []
 
 perms = {
     "/etc/": ["0", "0", "755"],
