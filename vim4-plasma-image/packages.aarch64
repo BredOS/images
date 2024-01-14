@@ -23,7 +23,7 @@ linux-vim4
 linux-vim4-headers
 mesa
 libdrm
-bred-skel-default
+# bred-skel-default
 uboot-tools
 linux-firmware
 linux-firmware-whence

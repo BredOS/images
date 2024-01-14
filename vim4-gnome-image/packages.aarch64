@@ -1,0 +1,88 @@
+# ====
+# CORE
+# ====
+
+base
+base-devel
+yay
+networkmanager
+network-manager-applet
+nano
+lm_sensors
+archlinux-keyring
+archlinuxarm-keyring
+btrfs-progs
+bluez
+fish
+sudo
+polkit
+bluez-utils
+vim4-post-install
+firmware-vim4
+linux-vim4
+linux-vim4-headers
+mesa
+libdrm
+# bred-skel-default
+uboot-tools
+linux-firmware
+linux-firmware-whence
+lsb-release
+xf86-video-fbdev
+xorg-server
+bred-os-release
+parted
+gvfs
+pipewire-pulse
+wireplumber
+pipewire-alsa
+pipewire-jack
+bredos-keyring
+bredos-mirrorlist
+dosfstools
+e2fsprogs
+librewolf-bin
+neofetch
+update-extlinux
+
+# ======
+# BAKERY
+# ======
+
+gnu-netcat
+bakery
+bakery-gui
+python-requests
+
+# ===
+# GUI
+# ===
+
+gdm
+gnome
+gnome-tweaks
+geary
+gnome-notes
+gnome-todo
+cheese
+seahorse
+gnome-appfolders-manager
+gnome-applets
+gnome-break-timer
+gnome-firmware
+gnome-flashback
+gnome-icon-theme-extras
+#gnome-initial-setup
+gnome-latex
+gnome-mplayer
+gnome-packagekit
+gnome-panel
+gnome-passwordsafe
+gnome-pie
+gnome-podcasts
+gnome-shell-extension-appindicator
+gnome-subtitles
+
+# GNOME Dropdown Terminal
+guake
+# nautilus-terminal
