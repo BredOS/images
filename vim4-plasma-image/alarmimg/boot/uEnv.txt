@@ -1,0 +1,2 @@
+partitiontype=partition_type=generic
+fan_mode=auto
