@@ -63,26 +63,17 @@ gnome
 gnome-tweaks
 geary
 gnome-notes
-gnome-todo
 cheese
 seahorse
-gnome-appfolders-manager
+
 gnome-applets
-gnome-break-timer
 gnome-firmware
-gnome-flashback
 gnome-icon-theme-extras
 #gnome-initial-setup
 gnome-latex
 gnome-mplayer
-gnome-packagekit
 gnome-panel
 gnome-passwordsafe
 gnome-pie
-gnome-podcasts
 gnome-shell-extension-appindicator
-gnome-subtitles
 
-# GNOME Dropdown Terminal
-guake
-# nautilus-terminal
