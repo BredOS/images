@@ -44,6 +44,8 @@ e2fsprogs
 librewolf-bin
 neofetch
 update-extlinux
+less
+lshw
 
 # ======
 # BAKERY
