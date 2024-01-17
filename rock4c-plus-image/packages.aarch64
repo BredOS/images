@@ -45,6 +45,8 @@ mali-G610-firmware
 # update-extlinux
 blueman
 cpupower
+less
+lshw
 
 # ======
 # BAKERY

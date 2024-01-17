@@ -48,6 +48,8 @@ neofetch
 # update-extlinux
 blueman
 cpupower
+less
+lshw
 
 # ======
 # BAKERY

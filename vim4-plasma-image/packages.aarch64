@@ -44,6 +44,8 @@ e2fsprogs
 librewolf-bin
 neofetch
 update-extlinux
+less
+lshw
 
 # ======
 # BAKERY
@@ -59,6 +61,7 @@ python-requests
 # ===
 
 dolphin
+dnsmasq
 kde-cli-tools
 kde-gtk-config
 kdeclarative5
