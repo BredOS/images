@@ -58,6 +58,7 @@ python-requests
 # GUI
 # ===
 
+dolphin
 kde-cli-tools
 kde-gtk-config
 kdeclarative5
