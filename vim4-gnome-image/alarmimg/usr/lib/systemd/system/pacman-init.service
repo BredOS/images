@@ -6,8 +6,7 @@ Before=sshd.service cloud-final.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStartPre=/usr/bin/pacman-key --init
-ExecStart=/usr/bin/pacman-key --populate
+ExecStart=/usr/bin/pacman-init
 
 [Install]
 WantedBy=multi-user.target
