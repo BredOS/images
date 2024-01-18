@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = gnome-session
+
+[Action]
+Description = Disabling GNOME session..
+When = PostTransaction
+Exec = /bin/sh -c 'mv /usr/share/xsessions/gnome.desktop /usr/share/xsessions/gnome.desktop.disabled && mv /usr/share/xsessions/gnome-xorg.desktop /usr/share/xsessions/gnome-xorg.desktop.disabled && mv /usr/share/wayland-sessions/gnome-wayland.desktop /usr/share/wayland-sessions/gnome-wayland.desktop.disabled && mv /usr/share/wayland-sessions/gnome.desktop /usr/share/wayland-sessions/gnome.desktop.disabled'
