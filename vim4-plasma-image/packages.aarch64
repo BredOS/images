@@ -46,6 +46,7 @@ neofetch
 update-extlinux
 less
 lshw
+expect
 
 # ======
 # BAKERY

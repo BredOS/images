@@ -52,6 +52,7 @@ blueman
 cpupower
 less
 lshw
+expect
 
 # ======
 # BAKERY
