@@ -91,7 +91,7 @@ gnome-shell-extensions
 # gnome-software
 gnome-system-monitor
 gnome-text-editor
-gnome-themes-standard
+gnome-themes-extra
 # gnome-tour
 gnome-user-docs
 gnome-weather
