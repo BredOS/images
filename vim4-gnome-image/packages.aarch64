@@ -109,5 +109,5 @@ gnome-icon-theme-extras
 gnome-latex
 gnome-panel
 gnome-passwordsafe
-gnome-pie
+# gnome-pie
 gnome-shell-extension-appindicator
