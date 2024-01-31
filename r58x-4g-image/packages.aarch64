@@ -13,7 +13,9 @@ archlinux-keyring
 archlinuxarm-keyring
 btrfs-progs
 bluez
-fish
+bash
+bash-completion
+omb-skel
 sudo
 polkit
 bluez-utils

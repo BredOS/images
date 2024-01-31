@@ -12,7 +12,9 @@ lm_sensors
 archlinux-keyring
 btrfs-progs
 bluez
-fish
+bash
+bash-completion
+omb-skel
 sudo
 polkit
 bluez-utils

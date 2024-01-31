@@ -13,15 +13,17 @@ archlinux-keyring
 archlinuxarm-keyring
 btrfs-progs
 bluez
-fish
+bash
+bash-completion
+omb-skel
 sudo
 polkit
 bluez-utils
 edge2-post-install
-ap6275p-firmware
-#f2fs-tools
-linux-edge2
-linux-edge2-headers
+# ap6275p-firmware
+# f2fs-tools
+linux-rockchip
+linux-rockchip-headers
 mesa-panfork-git
 libdrm
 bred-skel-default
@@ -44,7 +46,7 @@ dosfstools
 e2fsprogs
 librewolf-bin
 neofetch
-mali-G610-firmware
+# mali-G610-firmware
 update-extlinux
 blueman
 cpupower
