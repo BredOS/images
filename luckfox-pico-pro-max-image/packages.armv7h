@@ -1,0 +1,28 @@
+# ====
+# CORE
+# ====
+
+base
+base-devel
+networkmanager
+nano
+lm_sensors
+archlinux-keyring
+archlinuxarm-keyring
+bash
+bash-completion
+sudo
+linux-rockchip
+linux-rockchip-headers
+uboot-tools
+linux-firmware
+linux-firmware-whence
+lsb-release
+bred-os-release
+bredos-keyring
+bredos-mirrorlist
+neofetch
+cpupower
+less
+lshw
+expect

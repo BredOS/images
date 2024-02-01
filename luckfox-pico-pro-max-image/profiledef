@@ -1,0 +1,86 @@
+#! /usr/bin/env python
+from time import strftime
+
+img_version = strftime("%Y-%m-%d")
+edition = "Minimal"
+arch = "armv7h"  # aarch64, armv7h, riscv64
+img_name = "BredOS-ARM-luckfox-pico-pro-max-" + img_version
+install_dir = "arch"
+fs = "ext4"  # ext4 or btrfs
+img_type = "image"  # image (img.xz) or rootfs (tar.gz)
+img_backend = "loop"  # loop or qemu-nbd
+use_gpt=False
+
+# If you use btrfs you need add `rootflags=subvol=@ rootfstype=btrfs`
+# And remove `rootfstype=ext4`
+
+cmdline = "console=ttyFIQ0 console=tty1 consoleblank=0 loglevel=7 panic=10 rootwait rw init=/sbin/init rootfstype=ext4 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory swapaccount=1 irqchip.gicv3_pseudo_nmi=0 switolb=1 coherent_pool=2M"
+
+configtxt = """label BredOS ARM
+    kernel /vmlinuz-linux-rockchip
+    initrd /initramfs-linux-rockchip.img
+    devicetreedir /dtbs/
+    fdt /dtbs/rockchip/rv1106g-luckfox-pico-pro-max.dtb
+
+"""
+
+partition_table = lambda img_size, fs: {
+    "uboot": ["0%", "2M", "2M", "NONE"],
+    "boot": ["2M", "60M", "58M", "fat32"],
+    "primary": ["60M", "100%", str(int(img_size / 1000) - 60) + "M", fs],
+}
+
+partition_suffix = lambda config_dir, disk: [
+    ["mkfs.fat", "-v", "-F32", "-n", "BOOT", disk + "p1"],
+    ["dd", "if=" + config_dir + "env.img", "of=" + disk],
+    ["dd", "if=" + config_dir + "idblock.img", "of=" + disk, "bs=512", "seek=64"],
+    ["dd", "if=" + config_dir + "uboot.img", "of=" + disk, "bs=512", "seek=1024"],
+]
+
+perms = {
+    "/etc/": ["0", "0", "755"],
+    "/usr/bin/resizefs": ["0", "0", "755"],
+    "/usr/bin/zswap-arm-ctrl": ["0", "0", "755"],
+    "/usr/bin/pacman-init": ["0", "0", "755"],
+    "/usr/bin/oemcleanup": ["0", "0", "755"],
+    "/etc/sudoers.d": ["0", "0", "750"],
+    "/usr/lib": ["0", "0", "755"],
+    "/usr/bin": ["0", "0", "755"],
+    "/usr": ["0", "0", "755"],
+    "/home/bred/": ["1001", "1001", "750"],
+    "/home": ["0", "0", "755"],
+}
+
+mkcmds = """
+copyfiles(config_dir + "/alarmimg", cfg["install_dir"])
+fixperms(cfg["install_dir"])
+pacstrap_packages(pacman_conf, cfg["packages_file"], cfg["install_dir"])
+machine_id()
+fixperms(cfg["install_dir"])
+copy_skel_to_users()
+logging.info("Partitioning luckfox pico")
+rootfs_size = int(
+    subprocess.check_output(["du", "-s", "--exclude=proc", cfg["install_dir"]])
+    .split()[0]
+    .decode("utf-8")
+)
+img_size, ldev = makeimg(
+    rootfs_size, cfg["fs"], cfg["img_name"], cfg["img_backend"]
+)
+partition(
+    ldev, cfg["fs"], img_size, cfg["partition_table"](img_size, cfg["fs"])
+)
+if not os.path.exists(mnt_dir):
+    os.mkdir(mnt_dir)
+subprocess.run("mount " + ldev + "p1 " + mnt_dir + "/boot", shell=True)
+copyfiles(cfg["install_dir"], mnt_dir, retainperms=True)
+create_extlinux_conf(mnt_dir, cfg["configtxt"], cfg["cmdline"], ldev)
+create_fstab(cfg["fs"], ldev)
+unmount(cfg["img_backend"], mnt_dir, ldev)
+cleanup(cfg["img_backend"])
+if args.no_compress:
+    copyimage(cfg["img_name"])
+else:
+    compressimage(cfg["img_name"])
+cleanup(cfg["work_dir"])
+"""
