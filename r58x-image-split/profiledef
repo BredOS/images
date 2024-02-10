@@ -1,0 +1,99 @@
+#! /usr/bin/env python
+from time import strftime
+
+img_version = strftime("%Y-%m-%d")
+edition = "Cinnamon"
+arch = "aarch64"  # aarch64, armv7h, riscv64
+img_name = "BredOS-ARM-r58x-" + img_version
+install_dir = "arch"
+fs = "btrfs"  # ext4 or btrfs
+img_type = "image"  # image (img.xz) or rootfs (tar.gz)
+img_backend = "loop"  # loop or qemu-nbd
+
+# If you use btrfs you need add `rootflags=subvol=@ rootfstype=btrfs`
+# And remove `rootfstype=ext4`
+
+cmdline = "earlycon=uart8250,mmio32,0xfeb50000 console=ttyFIQ0 console=tty1 consoleblank=0 loglevel=0 panic=10 rootwait rw init=/sbin/init rootflags=subvol=@ rootfstype=btrfs cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory swapaccount=1 irqchip.gicv3_pseudo_nmi=0 switolb=1 coherent_pool=2M"
+
+configtxt = """label BredOS ARM
+    kernel /vmlinuz-linux-rockchip
+    initrd /initramfs-linux-rockchip.img
+    fdt /dtbs/rockchip/rk3588-blueberry-edge-v10-linux.dtb
+
+"""
+
+partition_table_boot = {
+    "uboot": ["0%", "16M", "16M", "NONE"],
+    "boot": ["16M", "150M", "134M", "fat32"],
+}
+
+partition_table_root = lambda img_size, fs: {
+    "primary": ["0%", "100%", str(int(img_size / 1000) - 150) + "M", fs],
+}
+
+partition_suffix = lambda config_dir, disk: [
+    ["mkfs.fat", "-v", "-F32", "-n", "BOOT", disk + "p1"],
+    ["dd", "if=" + config_dir + "idbloader.img", "of=" + disk, "bs=512", "seek=64"],
+    ["dd", "if=" + config_dir + "u-boot.itb", "of=" + disk, "bs=512", "seek=16384"],
+]
+
+perms = {
+    "/etc/": ["0", "0", "755"],
+    "/usr/bin/resizefs": ["0", "0", "755"],
+    "/usr/bin/zswap-arm-ctrl": ["0", "0", "755"],
+    "/usr/bin/pacman-init": ["0", "0", "755"],
+    "/usr/bin/oemcleanup": ["0", "0", "755"],
+    "/etc/polkit-1/rules.d": ["0", "0", "750"],
+    "/etc/sudoers.d": ["0", "0", "750"],
+    "/usr/lib": ["0", "0", "755"],
+    "/usr/bin": ["0", "0", "755"],
+    "/usr": ["0", "0", "755"],
+    "/home/bred/.config/autostart/org.bredos.bakery.desktop": ["1001", "1001", "755"],
+    "/home/bred/Desktop/org.bredos.bakery.desktop": ["1001", "1001", "755"],
+    "/home/bred/": ["1001", "1001", "750"],
+    "/home": ["0", "0", "755"],
+}
+
+mkcmds = """
+copyfiles(config_dir + "/alarmimg", cfg["install_dir"])
+fixperms(cfg["install_dir"])
+pacstrap_packages(pacman_conf, cfg["packages_file"], cfg["install_dir"])
+machine_id()
+fixperms(cfg["install_dir"])
+copy_skel_to_users()
+logging.info("Partitioning rock5b-split")
+rootfs_size = int(
+    subprocess.check_output(["du", "-s", "--exclude=proc", cfg["install_dir"]])
+    .split()[0]
+    .decode("utf-8")
+)
+img_size_b, ldev_b = makeimg(
+    "150000", None, cfg["img_name"] + "_BOOT", cfg["img_backend"]
+)
+img_size_r, ldev_r = makeimg(
+    rootfs_size, cfg["fs"], cfg["img_name"] + "_ROOTFS", cfg["img_backend"]
+)
+partition(ldev_b, None, img_size_b, cfg["partition_table_boot"])
+partition(
+    ldev_r,
+    cfg["fs"],
+    img_size_r,
+    cfg["partition_table_root"](img_size_r, cfg["fs"]),
+    split=True,
+)
+if not os.path.exists(mnt_dir):
+    os.mkdir(mnt_dir)
+subprocess.run("mount " + ldev_b + "p1 " + mnt_dir + "/boot", shell=True)
+copyfiles(cfg["install_dir"], mnt_dir, retainperms=True)
+create_extlinux_conf(mnt_dir, cfg["configtxt"], cfg["cmdline"], ldev_r)
+create_fstab(cfg["fs"], ldev_b, ldev_r)
+unmount(cfg["img_backend"], mnt_dir, ldev_b, ldev_r)
+cleanup(cfg["img_backend"])
+if args.no_compress:
+    copyimage(cfg["img_name"] + "_BOOT")
+    copyimage(cfg["img_name"] + "_ROOTFS")
+else:
+    compressimage(cfg["img_name"] + "_BOOT")
+    compressimage(cfg["img_name"] + "_ROOTFS")
+cleanup(cfg["work_dir"])
+"""
