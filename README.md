@@ -1,7 +1,10 @@
 # BredOS Image build files.
 
-Instructions for building in each subfolder.</br>›
-To build from x86_64, you need to install the following:
+These are the officially supported images.</br>
+For the downstream / experimental images, check the [downstream](https://github.com/BredOS/images/tree/downstream) branch.</br>
+
+Instructions for building in each subfolder.</br>
+› To build from x86_64, you need to install the following:
 ```
 sudo pacman -S qemu-user-static-binfmt qemu-user-static && systemctl restart systemd-binfmt
 ```
