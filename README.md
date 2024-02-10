@@ -1,9 +1,9 @@
-# BredOS Downstream image build files.
+# BredOS downstream image build files.
 
 These images are not published on the repo and are considered unstable and unsupported.</br>
 
 Instructions for building in each subfolder.</br>
-To build from x86_64, you need to install the following:
+› To build from x86_64, you need to install the following:
 ```
 sudo pacman -S qemu-user-static-binfmt qemu-user-static && systemctl restart systemd-binfmt
 ```
