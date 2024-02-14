@@ -1,0 +1,74 @@
+# ====
+# CORE
+# ====
+
+base
+base-devel
+yay
+networkmanager
+network-manager-applet
+nano
+lm_sensors
+archlinux-keyring
+archlinuxarm-keyring
+btrfs-progs
+bluez
+bash
+bash-completion
+omb-skel
+sudo
+polkit
+bluez-utils
+linux-rockchip-rk3588
+linux-rockchip-rk3588-headers
+mesa-panfork-git
+libdrm
+bred-skel-default
+uboot-tools
+linux-firmware
+linux-firmware-whence
+lsb-release
+xf86-video-fbdev
+xorg-server
+bred-os-release
+parted
+gvfs
+pipewire-pulse
+pipewire-alsa
+pipewire-jack
+bredos-keyring
+bredos-mirrorlist
+dosfstools
+e2fsprogs
+librewolf-bin
+neofetch
+mali-G610-firmware-rkr4
+blueman
+cpupower
+less
+lshw
+expect
+
+# ======
+# BAKERY
+# ======
+
+gnu-netcat
+bakery
+bakery-gui
+
+# ===
+# GUI
+# ===
+cinnamon
+gnome-terminal
+lightdm
+xorg
+hicolor-icon-theme
+lightdm-slick-greeter
+noto-fonts
+gedit
+gnome-system-monitor
+mint-themes
+mint-y-icons
+engrampa
