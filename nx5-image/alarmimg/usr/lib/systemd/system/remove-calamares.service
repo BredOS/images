@@ -1,9 +1,0 @@
-[Unit]
-Description=Remove Calamares
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/remove-calamares
-
-[Install]
-WantedBy=multi-user.target
