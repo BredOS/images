@@ -19,11 +19,12 @@ omb-skel
 sudo
 polkit
 bluez-utils
-linux-rockchip-rk3588
-linux-rockchip-rk3588-headers
+linux-rockchip
+linux-rockchip-headers
 mesa-panfork-git
 libdrm
 bred-skel-default
+bredos-zram-defaults
 uboot-tools
 linux-firmware
 linux-firmware-whence
