@@ -24,7 +24,6 @@ linux-rockchip-headers
 mesa-panfork-git
 libdrm
 bred-skel-default
-bredos-zram-defaults
 uboot-tools
 linux-firmware
 linux-firmware-whence
@@ -38,6 +37,8 @@ pipewire-pulse
 pipewire-alsa
 pipewire-jack
 bredos-keyring
+bredos-logo
+bredos-zram-defaults
 bredos-mirrorlist
 dosfstools
 e2fsprogs
