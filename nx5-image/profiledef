@@ -18,7 +18,7 @@ cmdline = "console=ttyFIQ0,1500000n8 console=tty0 consoleblank=0 loglevel=0 root
 configtxt = """label BredOS ARM
     kernel /vmlinuz-linux-rockchip
     initrd /initramfs-linux-rockchip.img
-    fdtdir /dtbs/rockchip/
+    fdtdir /dtbs/
 """
 
 partition_table = lambda img_size, fs: {
