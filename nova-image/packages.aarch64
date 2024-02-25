@@ -41,6 +41,8 @@ pipewire-pulse
 pipewire-alsa
 pipewire-jack
 bredos-keyring
+bredos-logo
+bredos-zram-defaults
 bredos-mirrorlist
 dosfstools
 e2fsprogs

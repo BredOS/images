@@ -41,6 +41,8 @@ pipewire-pulse
 pipewire-alsa
 pipewire-jack
 bredos-keyring
+bredos-logo
+bredos-zram-defaults
 bredos-mirrorlist
 dosfstools
 e2fsprogs
@@ -65,16 +67,53 @@ bakery-gui
 # ===
 # GUI
 # ===
-cinnamon
-gnome-terminal
-lightdm
-xorg
-hicolor-icon-theme
-lightdm-slick-greeter
-noto-fonts
-gedit
+
+gdm
+gnome-backgrounds
+# gnome-books
+# gnome-boxes
+gnome-calculator
+gnome-calendar
+gnome-characters
+gnome-clocks
+gnome-color-manager
+gnome-connections
+gnome-console
+gnome-contacts
+gnome-control-center
+gnome-disk-utility
+gnome-font-viewer
+gnome-getting-started-docs
+gnome-keyring
+gnome-logs
+# gnome-maps
+gnome-menus
+gnome-music
+gnome-remote-desktop
+gnome-session
+gnome-settings-daemon
+gnome-shell
+gnome-shell-extensions
+# gnome-software
 gnome-system-monitor
-mint-themes
-mint-y-icons
-# mintlocale
-engrampa
+gnome-text-editor
+gnome-themes-extra
+# gnome-tour
+gnome-user-docs
+gnome-weather
+gnome-tweaks
+geary
+gnome-notes
+cheese
+seahorse
+vlc
+
+gnome-applets
+# gnome-firmware
+gnome-icon-theme-extras
+# gnome-initial-setup
+gnome-latex
+gnome-panel
+gnome-passwordsafe
+# gnome-pie
+gnome-shell-extension-appindicator
