@@ -19,8 +19,8 @@ omb-skel
 sudo
 polkit
 bluez-utils
-linux-rockchip
-linux-rockchip-headers
+linux-rockchip-rkr6
+linux-rockchip-rkr6-headers
 mesa-panfork-git
 libdrm
 bred-skel-default
