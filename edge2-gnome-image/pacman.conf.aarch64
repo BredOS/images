@@ -36,6 +36,9 @@ LocalFileSigLevel = Optional
 [BredOS]
 Include = /etc/pacman.d/bredos-mirrorlist
 
+[BredOS-any]
+Include = /etc/pacman.d/bredos-mirrorlist
+
 [core]
 Server = http://dk.mirror.archlinuxarm.org/$arch/$repo
 

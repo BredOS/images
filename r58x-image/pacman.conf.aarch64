@@ -1,13 +1,13 @@
 # /etc/pacman.conf
-# 
-# 
+#
+#
 # See the pacman.conf(5) manpage for option and repository directives
 
-# 
+#
 # GENERAL OPTIONS
-# 
+#
 [options]
-# IgnorePkg = 
+# IgnorePkg =
 # RootDir = /
 # DBPath = /var/lib/pacman/
 # CacheDir = /var/cache/pacman/pkg/
@@ -19,10 +19,10 @@ HoldPkg = pacman glibc
 # XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
 # CleanMethod = KeepInstalled
 Architecture = aarch64
-# IgnorePkg = 
-# IgnoreGroup = 
-# NoUpgrade = 
-# NoExtract = 
+# IgnorePkg =
+# IgnoreGroup =
+# NoUpgrade =
+# NoExtract =
 # UseSyslog
 Color
 # NoProgressBar
@@ -34,6 +34,9 @@ LocalFileSigLevel = Optional
 # RemoteFileSigLevel = Required
 
 [BredOS]
+Include = /etc/pacman.d/bredos-mirrorlist
+
+[BredOS-any]
 Include = /etc/pacman.d/bredos-mirrorlist
 
 [core]
