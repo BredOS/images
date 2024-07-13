@@ -21,9 +21,9 @@ polkit
 bluez-utils
 rock5b-post-install
 #f2fs-tools
-linux-rockchip-rk3588
-linux-rockchip-rk3588-headers
-mesa-panfork-git
+linux-rockchip-rkr3
+linux-rockchip-rkr3-headers
+mesa
 libdrm
 bred-skel-default
 uboot-tools
@@ -49,7 +49,7 @@ dosfstools
 e2fsprogs
 librewolf-bin
 neofetch
-mali-G610-firmware
+mali-G610-firmware-rkr4
 # update-extlinux
 blueman
 cpupower
@@ -81,3 +81,5 @@ mint-themes
 mint-y-icons
 # mintlocale
 engrampa
+libmd
+libbsd

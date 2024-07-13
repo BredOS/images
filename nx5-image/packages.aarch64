@@ -19,9 +19,9 @@ omb-skel
 sudo
 polkit
 bluez-utils
-linux-rockchip-rkr6
-linux-rockchip-rkr6-headers
-mesa-panfork-git
+linux-rockchip-rkr3
+linux-rockchip-rkr3-headers
+mesa
 libdrm
 bred-skel-default
 uboot-tools
@@ -74,3 +74,5 @@ gnome-system-monitor
 mint-themes
 mint-y-icons
 engrampa
+libmd
+libbsd

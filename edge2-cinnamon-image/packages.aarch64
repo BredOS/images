@@ -22,9 +22,9 @@ bluez-utils
 edge2-post-install
 # ap6275p-firmware
 # f2fs-tools
-linux-rockchip
-linux-rockchip-headers
-mesa-panfork-git
+linux-rockchip-rkr3
+linux-rockchip-rkr3-headers
+mesa
 libdrm
 bred-skel-default
 uboot-tools

@@ -1,9 +1,9 @@
-# r58x-image-split
-## BredOS image building preset for the Mekotronics R58X (Split Root/Boot images)
+# rock5c-image
+## BredOS image building preset for the Radxa Rock 5C
 
 To be used with [https://github.com/BredOS/mkimage](https://github.com/BredOS/mkimage)
 
 ```
-mkimage.py -w ./work/ -o ./out/ -c ./r58x-image-split/
+mkimage.py -w ./work/ -o ./out/ -c ./rock5c-image/
 
 ```

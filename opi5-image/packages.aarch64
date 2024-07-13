@@ -19,11 +19,11 @@ omb-skel
 sudo
 polkit
 bluez-utils
-rock5b-post-install
+opi5-post-install
 #f2fs-tools
-linux-rockchip
-linux-rockchip-headers
-mesa-panfork-git
+linux-rockchip-rkr3
+linux-rockchip-rkr3-headers
+mesa
 libdrm
 bred-skel-default
 uboot-tools
@@ -56,6 +56,7 @@ cpupower
 less
 lshw
 expect
+ap6275p-firmware
 
 # ======
 # BAKERY
@@ -81,3 +82,5 @@ mint-themes
 mint-y-icons
 # mintlocale
 engrampa
+libmd
+libbsd
