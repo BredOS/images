@@ -17,7 +17,7 @@ cmdline = "console=ttyS0,115200n81 loglevel=3 rw panic=10 rootwait rw init=/sbin
 
 configtxt = """label BredOS ARM
     kernel /vmlinuz-rockchip-rkr3
-    initrd /initramfs-rockchip-rkr3.img
+    initrd /initramfs-linux-rockchip-rkr3.img
     fdt /dtbs/rockchip/rk3588s-cp4.dtb
 """
 
