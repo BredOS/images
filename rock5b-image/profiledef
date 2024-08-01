@@ -19,12 +19,11 @@ configtxt = """label BredOS ARM
     kernel /vmlinuz-linux-rockchip-rkr3
     initrd /initramfs-linux-rockchip-rkr3.img
     fdt /dtbs/rockchip/rk3588-rock5b.dtb
-
 """
 
 partition_table = lambda img_size, fs: {
     "uboot": ["0%", "16M", "16M", "NONE"],
-    "boot": ["16M", "200M", "184M", "fat32"],
+    "boot": ["17M", "200M", "183M", "fat32"],
     "primary": ["200M", "100%", str(int(img_size / 1000) - 150) + "M", fs],
 }
 
