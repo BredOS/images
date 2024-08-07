@@ -29,37 +29,23 @@ jobs:
         run: |
           sudo pacman -Sy --noconfirm --needed \
           python python-prettytable parted btrfs-progs \
-          git wget arch-install-scripts
+          git wget arch-install-scripts unzip
 
       - name: Build Image
         run: |
-          sudo python mkimage/mkimage.py -c images/${{ matrix.image }} -w /tmp/work -o ./out
-
-      - name: Generate SHA256 Hash
-        run: |
-          cd out
-          for img in *.img; do
-            sha256sum "$img" > "$img.sha256"
-          done
+          sudo python mkimage/mkimage.py -c images/${{ matrix.image }} -w ./work -o ./out
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: images
-          path: out/*.img
-          retention-days: 7
-
-      - name: Upload Hashes
-        uses: actions/upload-artifact@v4
-        with:
-          name: hashes
-          path: out/*.img.sha256
+          name: images-${{ matrix.image }}
+          path: out/*.img.xz
           retention-days: 7
 
       - name: Cleanup
         run: |
-          rm -rf ./out
-          rm -rf /tmp/work
+          sudo rm -rf ./out
+          sudo rm -rf ./work
 
   release:
     needs: build
@@ -70,22 +56,29 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Download Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: images
+        run: |
+          # Fetch the list of artifacts using GitHub's REST API
+          ARTIFACTS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts")
 
-      - name: Download Hashes
-        uses: actions/download-artifact@v4
-        with:
-          name: hashes
+          # Extract artifact names
+          echo "$ARTIFACTS" | jq -r '.artifacts[].name' | while read -r ARTIFACT_NAME; do
+            echo "Downloading $ARTIFACT_NAME"
+            curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              "https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$(echo "$ARTIFACTS" | jq -r --arg name "$ARTIFACT_NAME" '.artifacts[] | select(.name == $name) | .id')/zip" \
+              --output "$ARTIFACT_NAME.zip"
+          done
 
+          # Extract artifacts
+          for artifact in *.zip; do
+            unzip -q "$artifact"
+          done
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v2
         with:
           files: |
             images/*.img
-            hashes/*.img.sha256
           tag_name: $(date +'%Y-%m-%d')
           draft: true
           prerelease: true
