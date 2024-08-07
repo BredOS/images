@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo pacman -S --noconfirm --needed \
+          sudo pacman -Sy --noconfirm --needed \
           python python-prettytable parted btrfs-progs \
           git wget arch-install-scripts
 
