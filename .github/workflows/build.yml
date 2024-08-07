@@ -33,6 +33,7 @@ jobs:
 
       - name: Build Image
         run: |
+          sudo rm -f /var/lib/pacman/db.lck
           sudo python mkimage/mkimage.py -c images/${{ matrix.image }} -w ./work -o ./out
 
       - name: Upload Artifacts
