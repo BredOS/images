@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        image: [nova-image, rock5c-image]
+        image: [nova-image]
 
     steps:
       - name: Checkout Images
@@ -38,7 +38,7 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: images-${{ matrix.image }}
+          name: ${{ matrix.image }}
           path: out/*.img.xz
           retention-days: 7
 
@@ -52,12 +52,10 @@ jobs:
     runs-on: [self-hosted, ARM64, BredOS]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Download Artifacts
         run: |
           # Fetch the list of artifacts using GitHub's REST API
+          mkdir ./out/ && cd ./out/
           ARTIFACTS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts")
 
@@ -71,15 +69,24 @@ jobs:
 
           # Extract artifacts
           for artifact in *.zip; do
-            unzip -q "$artifact" -d "${artifact%.zip}"
+            unzip -q "$artifact" 
           done
+
+      - name: Set current date as tag name
+        id: set_tag_name
+        run: echo "TAG_NAME=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            **.img.xz
-          tag_name: $(date +'%Y-%m-%d')
+            ./out/*.img.xz
+          tag_name: ${{ env.TAG_NAME }}
           draft: true
           prerelease: true
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Clean up
+        run: |
+          rm ./out/ -rf
