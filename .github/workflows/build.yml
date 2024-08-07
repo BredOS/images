@@ -61,24 +61,24 @@ jobs:
           ARTIFACTS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts")
 
-          # Extract artifact names
-          echo "$ARTIFACTS" | jq -r '.artifacts[].name' | while read -r ARTIFACT_NAME; do
+          # Extract artifact names and IDs
+          echo "$ARTIFACTS" | jq -r '.artifacts[] | .name + " " + (.id|tostring)' | while read -r ARTIFACT_NAME ARTIFACT_ID; do
             echo "Downloading $ARTIFACT_NAME"
-            curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              "https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$(echo "$ARTIFACTS" | jq -r --arg name "$ARTIFACT_NAME" '.artifacts[] | select(.name == $name) | .id')/zip" \
+            curl -s -L -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              "https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip" \
               --output "$ARTIFACT_NAME.zip"
           done
 
           # Extract artifacts
           for artifact in *.zip; do
-            unzip -q "$artifact"
+            unzip -q "$artifact" -d "${artifact%.zip}"
           done
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            images/*.img
+            **.img.xz
           tag_name: $(date +'%Y-%m-%d')
           draft: true
           prerelease: true
