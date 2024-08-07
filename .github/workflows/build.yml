@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo pacman -S --noconfirm --needed \
-          python python-prettytable python-argparse parted btrfs-progs \
+          python python-prettytable parted btrfs-progs \
           git wget arch-install-scripts
 
       - name: Build Image
