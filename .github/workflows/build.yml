@@ -1,0 +1,92 @@
+name: Build Images
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: [self-hosted, ARM64, BredOS]
+
+    strategy:
+      matrix:
+        image: [nova-image, rock5c-image]
+
+    steps:
+      - name: Checkout Images
+        uses: actions/checkout@v4
+        with:
+          path: images
+
+      - name: Checkout mkimage
+        uses: actions/checkout@v4
+        with:
+          repository: BredOS/mkimage
+          path: mkimage
+
+      - name: Install dependencies
+        run: |
+          sudo pacman -S --noconfirm --needed \
+          python python-prettytable python-argparse parted btrfs-progs \
+          git wget arch-install-scripts
+
+      - name: Build Image
+        run: |
+          sudo python mkimage/mkimage.py -c images/${{ matrix.image }} -w /tmp/work -o ./out
+
+      - name: Generate SHA256 Hash
+        run: |
+          cd out
+          for img in *.img; do
+            sha256sum "$img" > "$img.sha256"
+          done
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: images
+          path: out/*.img
+          retention-days: 7
+
+      - name: Upload Hashes
+        uses: actions/upload-artifact@v4
+        with:
+          name: hashes
+          path: out/*.img.sha256
+          retention-days: 7
+
+      - name: Cleanup
+        run: |
+          rm -rf ./out
+          rm -rf /tmp/work
+
+  release:
+    needs: build
+    runs-on: [self-hosted, ARM64, BredOS]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: images
+
+      - name: Download Hashes
+        uses: actions/download-artifact@v4
+        with:
+          name: hashes
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            images/*.img
+            hashes/*.img.sha256
+          tag_name: $(date +'%Y-%m-%d')
+          draft: true
+          prerelease: true
+          token: ${{ secrets.GITHUB_TOKEN }}
