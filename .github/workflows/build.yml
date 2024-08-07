@@ -33,7 +33,7 @@ jobs:
 
       - name: Build Image
         run: |
-          sudo rm -f /var/lib/pacman/db.lck
+          sudo rm -rf /var/lib/pacman/db.lck ./out ./work
           sudo python mkimage/mkimage.py -c images/${{ matrix.image }} -w ./work -o ./out
 
       - name: Upload Artifacts
@@ -44,6 +44,7 @@ jobs:
           retention-days: 7
 
       - name: Cleanup
+        if: always()
         run: |
           sudo rm -rf ./out
           sudo rm -rf ./work
