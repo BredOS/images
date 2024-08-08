@@ -33,6 +33,7 @@ jobs:
 
       - name: Build Image
         run: |
+          sudo umount -R ./work/aarch64/* || true
           sudo rm -rf /var/lib/pacman/db.lck ./out ./work
           sudo python mkimage/mkimage.py -c images/${{ matrix.image }} -w ./work -o ./out
 
@@ -46,8 +47,8 @@ jobs:
       - name: Cleanup
         if: always()
         run: |
-          sudo rm -rf ./out
-          sudo rm -rf ./work
+          sudo umount -R ./work/aarch64/* || true
+          sudo rm -rf ./work ./out
 
   release:
     needs: build
