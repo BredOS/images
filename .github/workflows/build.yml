@@ -52,7 +52,7 @@ jobs:
 
   release:
     needs: build
-    runs-on: [self-hosted, ARM64, BredOS]
+    runs-on: [self-hosted, ARM64, BredOS, osuosl-m1]
 
     steps:
       - name: Download Artifacts
