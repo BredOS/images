@@ -15,11 +15,12 @@ img_backend = "loop"  # loop or qemu-nbd
 
 cmdline = "console=ttyFIQ0,1500000n8 console=tty1 console=both rw rootwait init=/sbin/init rootflags=subvol=@ rootfstype=btrfs"
 grubcmdl = "console=ttyFIQ0,1500000n8 console=tty1 console=both rw rootwait init=/sbin/init"
-grubdtb = "dtbs/rockchip/rk3588-firefly-itx-3588j.dtb"
+grubdtb = "" # This will not enable dtb
+#grubdtb = "dtbs/rockchip/rk3588-firefly-itx-3588j.dtb"
 
 configtxt = """label BredOS ARM
-    kernel /vmlinuz-linux-rockchip-rkr6
-    initrd /initramfs-linux-rockchip-rkr6.img
+    kernel /vmlinuz-linux-rockchip-rkr3
+    initrd /initramfs-linux-rockchip-rkr3.img
     fdt /dtbs/rockchip/rk3588-firefly-itx-3588j.dtb
 """
 
@@ -77,7 +78,7 @@ subprocess.run("mount " + ldev + "p1 " + mnt_dir + "/boot", shell=True)
 copyfiles(cfg["install_dir"], mnt_dir, retainperms=True)
 create_extlinux_conf(mnt_dir, cfg["configtxt"], cfg["cmdline"], ldev)
 create_fstab(cfg["fs"], ldev)
-grub_install(mnt_dir)
+#grub_install(mnt_dir)
 unmount(cfg["img_backend"], mnt_dir, ldev)
 cleanup(cfg["img_backend"])
 if args.no_compress:

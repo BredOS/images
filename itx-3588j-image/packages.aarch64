@@ -19,11 +19,11 @@ omb-skel
 sudo
 polkit
 bluez-utils
-linux-rockchip-rkr6
-linux-rockchip-rkr6-headers
-grub
-grub-btrfs
-efibootmgr
+linux-rockchip-rkr3
+linux-rockchip-rkr3-headers
+# grub
+# grub-btrfs
+# efibootmgr
 dosfstools
 mesa-panfork-git
 libdrm
