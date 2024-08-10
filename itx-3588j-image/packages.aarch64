@@ -19,8 +19,8 @@ omb-skel
 sudo
 polkit
 bluez-utils
-linux-rockchip-rkr3
-linux-rockchip-rkr3-headers
+linux-rockchip-rkr6
+linux-rockchip-rkr6-headers
 # grub
 # grub-btrfs
 # efibootmgr

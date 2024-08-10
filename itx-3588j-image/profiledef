@@ -19,8 +19,8 @@ grubdtb = "" # This will not enable dtb
 #grubdtb = "dtbs/rockchip/rk3588-firefly-itx-3588j.dtb"
 
 configtxt = """label BredOS ARM
-    kernel /vmlinuz-linux-rockchip-rkr3
-    initrd /initramfs-linux-rockchip-rkr3.img
+    kernel /vmlinuz-linux-rockchip-rkr6
+    initrd /initramfs-linux-rockchip-rkr6.img
     fdt /dtbs/rockchip/rk3588-firefly-itx-3588j.dtb
 """
 
