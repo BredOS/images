@@ -24,10 +24,13 @@ configtxt = """label BredOS ARM
     fdt /dtbs/rockchip/rk3588-firefly-itx-3588j.dtb
 """
 
-partition_table = lambda img_size, fs: {
+partition_table_boot = {
     "uboot": ["0%", "16M", "16M", "NONE"],
     "boot": ["16M", "200M", "184M", "fat32"],
-    "primary": ["200M", "100%", str(int(img_size / 1000) - 150) + "M", fs],
+}
+
+partition_table_root = lambda img_size, fs: {
+    "primary": ["0%", "100%", str(int(img_size / 1000) - 200) + "M", fs],
 }
 
 partition_suffix = lambda config_dir, disk: [
@@ -60,30 +63,40 @@ pacstrap_packages(pacman_conf, cfg["packages_file"], cfg["install_dir"])
 machine_id()
 fixperms(cfg["install_dir"])
 copy_skel_to_users()
-logging.info("Partitioning 3588j")
+logging.info("Partitioning 3588j split-image")
 rootfs_size = int(
     subprocess.check_output(["du", "-s", "--exclude=proc", cfg["install_dir"]])
     .split()[0]
     .decode("utf-8")
 )
-img_size, ldev = makeimg(
-    rootfs_size, cfg["fs"], cfg["img_name"], cfg["img_backend"]
+img_size_b, ldev_b = makeimg(
+    200000, None, cfg["img_name"] + "_BOOT", cfg["img_backend"]
 )
+img_size_r, ldev_r = makeimg(
+    rootfs_size, cfg["fs"], cfg["img_name"] + "_ROOTFS", cfg["img_backend"]
+)
+partition(ldev_b, None, img_size_b, cfg["partition_table_boot"])
 partition(
-    ldev, cfg["fs"], img_size, cfg["partition_table"](img_size, cfg["fs"])
+    ldev_r,
+    cfg["fs"],
+    img_size_r,
+    cfg["partition_table_root"](img_size_r, cfg["fs"]),
+    split=True,
 )
+
 if not os.path.exists(mnt_dir):
     os.mkdir(mnt_dir)
-subprocess.run("mount " + ldev + "p1 " + mnt_dir + "/boot", shell=True)
+subprocess.run("mount " + ldev_b + "p1 " + mnt_dir + "/boot", shell=True)
 copyfiles(cfg["install_dir"], mnt_dir, retainperms=True)
-create_extlinux_conf(mnt_dir, cfg["configtxt"], cfg["cmdline"], ldev)
-create_fstab(cfg["fs"], ldev)
-#grub_install(mnt_dir)
-unmount(cfg["img_backend"], mnt_dir, ldev)
+create_extlinux_conf(mnt_dir, cfg["configtxt"], cfg["cmdline"], ldev_r)
+create_fstab(cfg["fs"], ldev_b, ldev_r)
+unmount(cfg["img_backend"], mnt_dir, ldev_b, ldev_r)
 cleanup(cfg["img_backend"])
 if args.no_compress:
-    copyimage(cfg["img_name"])
+    copyimage(cfg["img_name"] + "_BOOT")
+    copyimage(cfg["img_name"] + "_ROOTFS")
 else:
-    compressimage(cfg["img_name"])
+    compressimage(cfg["img_name"] + "_BOOT")
+    compressimage(cfg["img_name"] + "_ROOTFS")
 cleanup(cfg["work_dir"])
 """
