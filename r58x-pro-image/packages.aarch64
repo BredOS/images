@@ -22,8 +22,8 @@ bluez-utils
 r58x-pro-post-install
 ap6275p-firmware
 #f2fs-tools
-linux-rockchip
-linux-rockchip-headers
+linux-rockchip-rkr3
+linux-rockchip-rkr3-headers
 mesa-panfork-git
 libdrm
 bred-skel-default
