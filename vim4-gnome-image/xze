@@ -84,16 +84,9 @@ FAIL(){
     exit 1
 }
 
-[ "$xz" ] || xz=$(which xz 2>/dev/null)
-[ $? = 0 ] || {
-    echo "[e] plz install xz">&2
-    echo " sudo apt-get install xz-utils">&2
-    exit 1
-}
-
 #echo "[i] $xz">&2
 
-$xz --help | grep -q threads= || {
+xz --help | grep -q threads= || {
     echo "[i] plz install last xz with MT support">&2
     exit 1
 }
