@@ -3,7 +3,7 @@
 ## hyphop ##
 
 #= xze - advanced xz + suitable for mt decompression & padding & meta
-
+xz=xz
 USAGE() { echo '
     xze - advanced xz packer (suitable for mt decompression + padding + meta)
 
