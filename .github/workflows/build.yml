@@ -10,8 +10,9 @@ jobs:
     runs-on: [self-hosted, ARM64, BredOS]
 
     strategy:
+      fail-fast: false
       matrix:
-        image: [nova-image, nx5-image, opi5-image, opi5plus-image, r58s-image, r58x-4g-image, r58x-image, r58x-pro-image, rock4c-plus-image, rock5a-image, rock5b-image, rock5c-image, cpi4-image]
+        image: [nova-image, nx5-image, opi5-image, opi5plus-image, r58s-image, r58x-4g-image, r58x-image, r58x-pro-image, rock5a-image, rock5b-image, rock5c-image, cpi4-image, edge2-cinnamon-image]
 
     steps:
       - name: Checkout Images
@@ -29,7 +30,7 @@ jobs:
         run: |
           sudo pacman -Sy --noconfirm --needed \
           python python-prettytable parted btrfs-progs \
-          git wget arch-install-scripts unzip
+          git wget arch-install-scripts unzip gptfdisk xz
 
       - name: Build Image
         run: |
@@ -52,7 +53,7 @@ jobs:
 
   release:
     needs: build
-    runs-on: [self-hosted, ARM64, BredOS, osuosl-m1]
+    runs-on: [self-hosted, ARM64, BredOS, emag]
 
     steps:
       - name: Download Artifacts
