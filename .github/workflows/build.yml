@@ -30,7 +30,7 @@ jobs:
         run: |
           sudo pacman -Sy --noconfirm --needed \
           python python-prettytable parted btrfs-progs \
-          git wget arch-install-scripts unzip gptfdisk xz
+          git wget arch-install-scripts unzip gptfdisk xz jq
 
       - name: Build Image
         run: |
@@ -56,41 +56,66 @@ jobs:
     runs-on: [self-hosted, ARM64, BredOS, emag]
 
     steps:
-      - name: Download Artifacts
+      - name: Download Artifacts in Parallel
         run: |
+          # Create the output directory
+          mkdir -p ./out/ && cd ./out/
+
           # Fetch the list of artifacts using GitHub's REST API
-          mkdir ./out/ && cd ./out/
           ARTIFACTS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts")
 
-          # Extract artifact names and IDs
+          # Extract artifact names and IDs and download them in parallel
           echo "$ARTIFACTS" | jq -r '.artifacts[] | .name + " " + (.id|tostring)' | while read -r ARTIFACT_NAME ARTIFACT_ID; do
             echo "Downloading $ARTIFACT_NAME"
             curl -s -L -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
               "https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip" \
-              --output "$ARTIFACT_NAME.zip"
+              --output "$ARTIFACT_NAME.zip" &
           done
+
+          # Wait for all parallel download jobs to complete
+          wait
 
           # Extract artifacts
           for artifact in *.zip; do
-            unzip -q "$artifact" 
+            unzip -q "$artifact"
           done
 
       - name: Set current date as tag name
         id: set_tag_name
         run: echo "TAG_NAME=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
-      - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: |
-            ./out/*.img.xz
-          tag_name: ${{ env.TAG_NAME }}
-          draft: true
-          prerelease: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Release and Upload Each Image Individually
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          TAG_NAME: ${{ env.TAG_NAME }}
+        run: |
+          # Create a draft release
+          RELEASE_RESPONSE=$(curl -s -X POST \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"tag_name\": \"$TAG_NAME\", \"name\": \"$TAG_NAME\", \"draft\": true, \"prerelease\": true}" \
+            "https://api.github.com/repos/$REPO/releases")
+          
+          RELEASE_ID=$(echo $RELEASE_RESPONSE | jq -r '.id')
+
+          if [ "$RELEASE_ID" == "null" ]; then
+            echo "Failed to create a release. Response: $RELEASE_RESPONSE"
+            exit 1
+          fi
+
+          # Upload each image file to the release
+          for img in ./out/*.img.xz; do
+            FILENAME=$(basename "$img")
+            echo "Uploading $FILENAME to release $RELEASE_ID"
+            curl -s -X POST \
+              -H "Authorization: token $GITHUB_TOKEN" \
+              -H "Content-Type: application/octet-stream" \
+              --data-binary @"$img" \
+              "https://uploads.github.com/repos/$REPO/releases/$RELEASE_ID/assets?name=$FILENAME"
+          done
 
       - name: Clean up
         run: |
-          rm ./out/ -rf
+          rm -rf ./out/
