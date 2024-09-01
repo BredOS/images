@@ -38,6 +38,12 @@ jobs:
           sudo rm -rf /var/lib/pacman/db.lck ./out ./work
           sudo python mkimage/mkimage.py -c images/${{ matrix.image }} -w ./work -o ./out
 
+      - name: Send image to release job
+        run: |
+          scp out/*.img.xz $RELEASE_VM:/images/
+        env:
+          RELEASE_VM: ${{ secrets.RELEASE_VM }}
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -56,31 +62,6 @@ jobs:
     runs-on: [self-hosted, ARM64, BredOS, emag]
 
     steps:
-      - name: Download Artifacts in Parallel
-        run: |
-          # Create the output directory
-          mkdir -p ./out/ && cd ./out/
-
-          # Fetch the list of artifacts using GitHub's REST API
-          ARTIFACTS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts")
-
-          # Extract artifact names and IDs and download them in parallel
-          echo "$ARTIFACTS" | jq -r '.artifacts[] | .name + " " + (.id|tostring)' | while read -r ARTIFACT_NAME ARTIFACT_ID; do
-            echo "Downloading $ARTIFACT_NAME"
-            curl -s -L -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              "https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip" \
-              --output "$ARTIFACT_NAME.zip" &
-          done
-
-          # Wait for all parallel download jobs to complete
-          wait
-
-          # Extract artifacts
-          for artifact in *.zip; do
-            unzip -q "$artifact"
-          done
-
       - name: Set current date as tag name
         id: set_tag_name
         run: echo "TAG_NAME=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
@@ -106,7 +87,7 @@ jobs:
           fi
 
           # Upload each image file to the release
-          for img in ./out/*.img.xz; do
+          for img in /images/*.img.xz; do
             FILENAME=$(basename "$img")
             echo "Uploading $FILENAME to release $RELEASE_ID"
             curl -s -X POST \
@@ -117,5 +98,6 @@ jobs:
           done
 
       - name: Clean up
+        if: always()
         run: |
-          rm -rf ./out/
+          rm -rf ./out/ /images/*.img.xz
