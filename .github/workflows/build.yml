@@ -90,10 +90,10 @@ jobs:
           for img in /images/*.img.xz; do
             FILENAME=$(basename "$img")
             echo "Uploading $FILENAME to release $RELEASE_ID"
-            curl -s -X POST \
+            curl -s \
               -H "Authorization: token $GITHUB_TOKEN" \
               -H "Content-Type: application/octet-stream" \
-              --data-binary @"$img" \
+              -T "$img" \
               "https://uploads.github.com/repos/$REPO/releases/$RELEASE_ID/assets?name=$FILENAME"
           done
 
