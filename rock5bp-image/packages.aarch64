@@ -19,7 +19,7 @@ omb-skel
 sudo
 polkit
 bluez-utils
-rock5b-post-install
+rock5bp-post-install
 linux-rockchip-rkr3
 linux-rockchip-rkr3-headers
 mesa-panfork-git
