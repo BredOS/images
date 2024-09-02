@@ -19,8 +19,8 @@ omb-skel
 sudo
 polkit
 bluez-utils
-linux-aarch64
-linux-aarch64-headers
+linux
+linux-headers
 mesa-panfork-git
 libdrm
 bred-skel-default

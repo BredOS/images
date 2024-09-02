@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image: [nova-image, nx5-image, opi5-image, opi5plus-image, r58s-image, r58x-4g-image, r58x-image, r58x-pro-image, rock5a-image, rock5b-image, rock5c-image, cpi4-image, edge2-cinnamon-image]
+        image: [nova-image, nx5-image, opi5-image, opi5plus-image, r58s-image, r58x-4g-image, r58x-image, r58x-pro-image, rock4c-plus-image, rock5a-image, rock5b-image, rock5bp-image, rock5c-image, rock5d-image, rock5itx-image, cpi4-image, edge2-cinnamon-image, fydetabduo-image, vim4-gnome-image]
 
     steps:
       - name: Checkout Images
@@ -56,6 +56,7 @@ jobs:
           sudo rm -rf ./work ./out
 
   release:
+    if: always()
     needs: build
     runs-on: [self-hosted, ARM64, BredOS, emag]
 
