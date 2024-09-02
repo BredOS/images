@@ -20,15 +20,12 @@ sudo
 polkit
 bluez-utils
 rock5b-post-install
-#f2fs-tools
 linux-rockchip-rkr3
 linux-rockchip-rkr3-headers
 mesa-panfork-git
 libdrm
 bred-skel-default
 uboot-tools
-#firmware-raspberrypi
-#raspberrypi-bootloader
 linux-firmware
 linux-firmware-whence
 lsb-release
@@ -50,7 +47,6 @@ e2fsprogs
 librewolf-bin
 neofetch
 mali-G610-firmware-rkr4
-# update-extlinux
 blueman
 cpupower
 less
