@@ -44,6 +44,7 @@ bredos-keyring
 bredos-logo
 bredos-zram-defaults
 bredos-mirrorlist
+bredos-nohang
 dosfstools
 e2fsprogs
 librewolf-bin
