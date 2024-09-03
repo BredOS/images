@@ -75,5 +75,9 @@ gedit
 gnome-system-monitor
 mint-themes
 mint-y-icons
-# mintlocale
+mintlocale
 engrampa
+noto-fonts-cjk
+libmd
+libbsd
+bredos-multilib
