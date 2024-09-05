@@ -21,7 +21,7 @@ polkit
 bluez-utils
 linux
 linux-headers
-mesa-panfork-git
+mesa
 libdrm
 bred-skel-default
 uboot-tools
