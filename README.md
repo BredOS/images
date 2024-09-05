@@ -10,15 +10,19 @@ python-prettytable arch-install-scripts grub parted
 ```
 </br>
 › To build from x86_64, you need to install:
+
 ```
 qemu-user-static-binfmt qemu-user-static
 ```
+
 and run:
 ```
 systemctl restart systemd-binfmt
 ```
+
 </br>
 Also make sure your system has the BredOS gpg keys and mirrorlist.
+
 ```
 sudo pacman-key --recv-keys 77193F152BDBE6A6 BF0740F967BA439D DAEAD1E6D799C638
 sudo pacman-key --lsign-key 77193F152BDBE6A6 BF0740F967BA439D DAEAD1E6D799C638
