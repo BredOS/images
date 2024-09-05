@@ -4,9 +4,13 @@ These are the officially supported images.</br>
 For the downstream / experimental images, check the [downstream](https://github.com/BredOS/images/tree/downstream) branch.</br>
 
 Instructions for building in each subfolder.</br>
+Build dependencies:
+```
+python-prettytable arch-install-scripts grub parted
+```
 › To build from x86_64, you need to install the following:
 ```
-sudo pacman -S qemu-user-static-binfmt qemu-user-static && systemctl restart systemd-binfmt
+qemu-user-static-binfmt qemu-user-static && systemctl restart systemd-binfmt
 ```
 Also make sure your system has the BredOS gpg keys and mirrorlist.
 ```
