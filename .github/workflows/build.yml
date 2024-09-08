@@ -42,13 +42,6 @@ jobs:
         env:
           RELEASE_VM: ${{ secrets.RELEASE_VM }}
 
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ matrix.image }}
-          path: out/*.img.xz
-          retention-days: 7
-
       - name: Cleanup
         if: always()
         run: |
