@@ -19,7 +19,7 @@ omb-skel
 sudo
 polkit
 bluez-utils
-rock5b-post-install
+rock5a-post-install
 #f2fs-tools
 linux-rockchip-rkr3
 linux-rockchip-rkr3-headers
@@ -84,3 +84,7 @@ engrampa
 libmd
 libbsd
 bredos-multilib
+
+grub
+grub-btrfs
+rock-5a-uefi

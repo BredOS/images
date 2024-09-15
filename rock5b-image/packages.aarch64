@@ -84,3 +84,7 @@ engrampa
 libmd
 libbsd
 bredos-multilib
+
+grub
+grub-btrfs
+rock-5b-uefi
