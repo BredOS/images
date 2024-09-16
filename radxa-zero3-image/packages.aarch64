@@ -19,8 +19,8 @@ omb-skel
 sudo
 polkit
 bluez-utils
-linux-rockchip
-linux-rockchip-headers
+linux-rockchip-rkr3
+linux-rockchip-rkr3-headers
 mesa-panfork-git
 libdrm
 bred-skel-default
@@ -34,6 +34,7 @@ bred-os-release
 parted
 gvfs
 pipewire-pulse
+wireplumber
 pipewire-alsa
 pipewire-jack
 bredos-keyring
@@ -74,3 +75,6 @@ gnome-system-monitor
 mint-themes
 mint-y-icons
 engrampa
+noto-fonts-cjk
+libmd
+libbsd
