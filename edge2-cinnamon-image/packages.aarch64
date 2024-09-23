@@ -24,7 +24,7 @@ edge2-post-install
 # f2fs-tools
 linux-rockchip-rkr3
 linux-rockchip-rkr3-headers
-mesa
+mesa-panfork-git
 libdrm
 bred-skel-default
 uboot-tools
@@ -81,3 +81,6 @@ mint-y-icons
 # mintlocale
 engrampa
 bredos-multilib
+
+libmd
+libbsd

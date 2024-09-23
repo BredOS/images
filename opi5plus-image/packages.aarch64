@@ -23,7 +23,7 @@ opi5plus-post-install
 #f2fs-tools
 linux-rockchip-rkr3
 linux-rockchip-rkr3-headers
-mesa
+mesa-panfork-git
 libdrm
 bred-skel-default
 uboot-tools

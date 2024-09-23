@@ -24,7 +24,7 @@ edge2-post-install
 # f2fs-tools
 linux-rockchip
 linux-rockchip-headers
-mesa
+mesa-panfork-git
 libdrm
 bred-skel-default
 uboot-tools

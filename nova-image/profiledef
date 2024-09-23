@@ -31,7 +31,7 @@ partition_table = lambda img_size, fs: {
 }
 
 partition_prefix = lambda config_dir, disk: [
-    ["dd", "if=/usr/share/edk2/devel/indiedroid-nova/indiedroid_nova_UEFI_Release_latest.img", "of=" + disk, "bs=512"],
+    ["dd", "if=/usr/share/edk2/devel/indiedroid-nova/indiedroid-nova_UEFI_Release_latest.img", "of=" + disk, "bs=512"],
     ["partprobe", disk],
     ["sgdisk", "-e", disk],
     ["partprobe", disk],
