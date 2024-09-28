@@ -1,10 +1,12 @@
 #!/bin/sh
-
+set -x
 ## hyphop ##
 
 #= xze - advanced xz + suitable for mt decompression & padding & meta
 xz=xz
-USAGE() { echo '
+
+USAGE() { 
+echo '
     xze - advanced xz packer (suitable for mt decompression + padding + meta)
 
 USAGE
@@ -29,7 +31,9 @@ USAGE
 META USAGE
 
     ./xze IMAGE -M INFO="any strings" var=VAR
-'; [ "$1" ] && echo '# META USAGE EXAMPLE (Krescue images)
+'
+# shellcheck disable=SC2016
+echo '# META USAGE EXAMPLE (Krescue images)
 
     IN=FreeBSD-aarch64-13.0-Khadas-EDGE-V-361468M-20200528.img
     ./xze "$IN" \
@@ -84,12 +88,20 @@ FAIL(){
     exit 1
 }
 
+if which xz 2>/dev/null; then
+    echo "xz is installed"
+else
+    echo "[e] plz install xz">&2
+    echo " sudo apt-get install xz-utils">&2
+    exit 1
+fi
+
 #echo "[i] $xz">&2
 
-xz --help | grep -q threads= || {
-    echo "[i] plz install last xz with MT support">&2
-    exit 1
-}
+# $xz --help | grep -q threads= || {
+#     echo "[i] plz install last xz with MT support">&2
+#     exit 1
+# }
 
 
 IN=

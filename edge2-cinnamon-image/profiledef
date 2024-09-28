@@ -18,7 +18,6 @@ cmdline = "${bootargs} console=ttyFIQ0,1500000 console=tty0 console=both irqchip
 configtxt = """label BredOS ARM
     kernel /vmlinuz-linux-rockchip-rkr3
     initrd /initramfs-linux-rockchip-rkr3.img
-    devicetreedir /dtbs/
     fdt /dtbs/rockchip/rk3588s-khadas-edge2.dtb
 
 """

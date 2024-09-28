@@ -28,7 +28,7 @@ jobs:
         run: |
           sudo pacman -Sy --noconfirm --needed \
           python python-prettytable parted btrfs-progs \
-          git wget arch-install-scripts unzip gptfdisk xz jq
+          git wget arch-install-scripts unzip gptfdisk xz jq edk2-rk3588-devel
 
       - name: Build Image
         run: |
