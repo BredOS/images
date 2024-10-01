@@ -1,0 +1,10 @@
+[Unit]
+Description=Remove OEM user
+
+[Service]
+Type=oneshot
+RemainAfterExit=no
+ExecStart=/usr/bin/oemcleanup
+
+[Install]
+WantedBy=multi-user.target

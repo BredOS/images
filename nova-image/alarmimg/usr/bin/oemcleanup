@@ -1,0 +1,7 @@
+#! /bin/sh
+
+/usr/bin/userdel -r -f bred
+/usr/bin/rm -rf /home/bred || true
+/usr/bin/systemctl disable oemcleanup.service
+/usr/bin/rm /etc/systemd/system/oemcleanup.service
+/usr/bin/rm /usr/bin/oemcleanup

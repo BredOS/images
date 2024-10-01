@@ -1,0 +1,16 @@
+#! /bin/bash
+
+# pacman initialization script
+
+# Initialize pacman's keyring
+pacman-key --init
+
+# Populate pacman's keyring with all the keys of the master keyring
+pacman-key --populate
+
+# The following command uses 'expect' to automate the key trust process
+# 'spawn' starts the command that we want to interact with
+# 'expect' waits for the output of the command
+# 'send' sends the reply to the command
+# 'interact' allows further interaction
+expect -c 'spawn sudo pacman-key --edit-key builder@archlinuxarm.org; expect "gpg>"; send "trust\r"; expect "Your decision?"; send "5\r"; expect "Do you really want to set this key to ultimate trust?"; send "y\r"; expect "gpg>"; send "save\r"; interact'
