@@ -1,3 +1,7 @@
+
+[![Latest GitHub Release](https://img.shields.io/github/release/BredOS/images.svg?label=Latest%20Release)](https://github.com/BredOS/images/releases/latest)
+[![Total GitHub Downloads](https://img.shields.io/github/downloads/BredOS/images/total.svg?&color=E95420&label=Total%20Downloads)](https://github.com/BredOS/images/releases)
+
 # BredOS Image build files.
 
 These are the officially supported images.</br>
