@@ -8,16 +8,16 @@ These are the officially supported images.</br>
 For the downstream / experimental images, check the [downstream](https://github.com/BredOS/images/tree/downstream) branch.</br>
 
 ## Modifying the images to add new device
-We may want to add support for a new device or add support for a temperature or touch screen sensor on the i2c bus. This is different from the x86 world where the kernel is able to detect the hardware automatically with ACPI, etc. In the ARM world, the kernel needs to be told explicitly about the hardware. 
+To define hardware onto the kernel (like for example to add a temperature sensor) the kernel on ARM systems needs to be explicitly told about the hardware using the kernel device tree.
 
-Currently, there are 2 ways to support a new device:
+Currently, there are 2 ways to alter the device tree of a system:
  - Using the device tree overlay (DTO) method.
  - Recompiling the kernel
 
-The DTO method is the recommended way since it is more flexible and does not require recompiling the kernel which is a time consuming process. 
+The DTO method is highly recommended since it is much more flexible and does not require recompiling the kernel, which is very time consuming.
 
 ### Device Tree Overlay (DTO) method
-The DTO method is the recommended way to add support for a new device. The DTO method is a way to describe the hardware to the kernel. Depending on if your device is UEFI or U-Boot enabled, the steps to enable the DTO will be different.
+Depending on if your device is UEFI or U-Boot enabled, the steps to enable the DTO will be different.
 
 Below are detailed instructions and examples for the DTO method:
  - https://wiki.bredos.org/en/how-to/how-to-setup-panthor
@@ -25,13 +25,13 @@ Below are detailed instructions and examples for the DTO method:
 
 
 ### Recompiling the kernel
-The kernel recompilation method is the traditional way to add support for a new device.
+The kernel recompilation method is the traditional way to perform changes at the device tree.
 
 Steps:
 1. Clone the kernel source code from the [BredOS kernel repository](https://github.com/BredOS/linux-rockchip) and make the necessary changes.
 
 2. Build the kernel with makepkg:
-    - Fork [sbc-pkgbuilds](https://github.com/BredOS/sbc-pkgbuilds/tree/main) and go to linux-rockchip-rkr3.
+    - Fork [sbc-pkgbuilds](https://github.com/BredOS/sbc-pkgbuilds/tree/main) and change into the directory that holds the kernel
     - Run `makepkg -sr` to pull the kernel source code from the [BredOS kernel repository](https://github.com/BredOS/linux-rockchip), which is saved in `linux-rockchip-rkr3/src/linux-rockchip`.
     - Make the necessary changes in `linux-rockchip-rkr3/src/linux-rockchip`.
     - Note that your changes won't get saved if you remove the directory.
@@ -53,7 +53,7 @@ SigLevel = Never
 Server = file:///tmp/repo
 ```
 
-Then just build image with mkimage.py in [mkimage](https://github.com/BredOS/mkimage)
+Then just build the image using [mkimage](https://github.com/BredOS/mkimage).
 
 ## Building specific images
 Instructions for building in each subfolder.</br>
