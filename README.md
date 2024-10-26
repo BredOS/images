@@ -7,6 +7,55 @@
 These are the officially supported images.</br>
 For the downstream / experimental images, check the [downstream](https://github.com/BredOS/images/tree/downstream) branch.</br>
 
+## Modifying the images to add new device
+We may want to add support for a new device, for example, a temperature sensor or touch screen sensor in the i2c bus. This is different from the x86 world where the kernel is able to detect the hardware automatically with ACPI,etc. In the ARM world, the kernel needs to be told explicitly about the hardware. 
+
+Currently, there are 2 ways to support a new device:
+ - Using the device tree overlay (DTO) method.
+ - Recompiling the kernel
+
+The DTO method is the recommended way since it is more flexible and does not require recompiling the kernel which is a time consuming process. 
+
+### Device Tree Overlay (DTO) method
+The DTO method is the recommended way to add support for a new device. The DTO method is a way to describe the hardware to the kernel. Depending on if your device is UEFI or U-Boot enabled, the steps to enable the DTO will be different.
+
+Below are detailed instructions and examples for the DTO method:
+ - https://wiki.bredos.org/en/how-to/how-to-setup-panthor
+ - https://wiki.indiedroid.us/Nova/device-tree-overlay
+
+
+### Recompiling the kernel
+The kernel recompilation method is the traditional way to add support for a new device.
+
+Steps:
+1. Clone the kernel source code from the [BredOS kernel repository](https://github.com/BredOS/linux-rockchip) and make the necessary changes.
+
+2. Build the kernel with makepkg:
+    - Fork [sbc-pkgbuilds](https://github.com/BredOS/sbc-pkgbuilds/tree/main) and go to linux-rockchip-rkr3.
+    - Run `makepkg -sr` to pull the kernel source code from the [BredOS kernel repository](https://github.com/BredOS/linux-rockchip), which is saved in `linux-rockchip-rkr3/src/linux-rockchip`.
+    - Make the necessary changes in `linux-rockchip-rkr3/src/linux-rockchip`.
+    - Note that your changes won't get saved if you remove the directory.
+    - After making the changes, run `makepkg -srf` to make the kernel package in arch format.
+
+3. Now you have the kernel package. Copy the kernel package to the temp repo /tmp/repo and update the repo database
+```
+mkdir /tmp/repo
+cp *.pkg.tar.zst /tmp/repo
+cd /tmp/repo
+repo-add test-repo.db.tar.gz /tmp/repo/*pkg.tar.zst
+```
+
+1. Add the temp repo to the pacman.conf file under the specific board-cfg folder. For example, for orangepi 5, go to https://github.com/BredOS/images/tree/main/opi5-image and
+then to <board-cfg>/pacman.conf.aarch64 where <board-cfg> is opi5-image:
+```ini
+[test-repo]
+SigLevel = Never
+Server = file:///tmp/repo
+```
+
+then just build image with mkimage.sh in [mkimage](https://github.com/BredOS/mkimage)
+
+## Building specific images
 Instructions for building in each subfolder.</br>
 Build dependencies:
 ```
