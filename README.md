@@ -8,7 +8,7 @@ These are the officially supported images.</br>
 For the downstream / experimental images, check the [downstream](https://github.com/BredOS/images/tree/downstream) branch.</br>
 
 ## Modifying the images to add new device
-We may want to add support for a new device, for example, a temperature sensor or touch screen sensor in the i2c bus. This is different from the x86 world where the kernel is able to detect the hardware automatically with ACPI,etc. In the ARM world, the kernel needs to be told explicitly about the hardware. 
+We may want to add support for a new device or add support for a temperature or touch screen sensor on the i2c bus. This is different from the x86 world where the kernel is able to detect the hardware automatically with ACPI, etc. In the ARM world, the kernel needs to be told explicitly about the hardware. 
 
 Currently, there are 2 ways to support a new device:
  - Using the device tree overlay (DTO) method.
@@ -45,7 +45,7 @@ cd /tmp/repo
 repo-add test-repo.db.tar.gz /tmp/repo/*pkg.tar.zst
 ```
 
-1. Add the temp repo to the pacman.conf file under the specific board-cfg folder. For example, for orangepi 5, go to https://github.com/BredOS/images/tree/main/opi5-image and
+4. Add the temp repo to the pacman.conf file under the specific board-cfg folder. For example, for orangepi 5, go to https://github.com/BredOS/images/tree/main/opi5-image and
 then to <board-cfg>/pacman.conf.aarch64 where <board-cfg> is opi5-image:
 ```ini
 [test-repo]
@@ -53,7 +53,7 @@ SigLevel = Never
 Server = file:///tmp/repo
 ```
 
-then just build image with mkimage.sh in [mkimage](https://github.com/BredOS/mkimage)
+Then just build image with mkimage.py in [mkimage](https://github.com/BredOS/mkimage)
 
 ## Building specific images
 Instructions for building in each subfolder.</br>
