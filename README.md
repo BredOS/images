@@ -28,16 +28,14 @@ Below are detailed instructions and examples for the DTO method:
 The kernel recompilation method is the traditional way to perform changes at the device tree.
 
 Steps:
-1. Clone the kernel source code from the [BredOS kernel repository](https://github.com/BredOS/linux-rockchip) and make the necessary changes.
-
-2. Build the kernel with makepkg:
+1. Build the kernel with makepkg:
     - Fork [sbc-pkgbuilds](https://github.com/BredOS/sbc-pkgbuilds/tree/main) and change into the directory that holds the kernel
     - Run `makepkg -sr` to pull the kernel source code from the [BredOS kernel repository](https://github.com/BredOS/linux-rockchip), which is saved in `linux-rockchip-rkr3/src/linux-rockchip`.
     - Make the necessary changes in `linux-rockchip-rkr3/src/linux-rockchip`.
     - Note that your changes won't get saved if you remove the directory.
     - After making the changes, run `makepkg -srf` to make the kernel package in arch format.
 
-3. Now you have the kernel package. Copy the kernel package to the temp repo /tmp/repo and update the repo database
+2. Now you have the kernel package. Copy the kernel package to the temp repo /tmp/repo and update the repo database
 ```
 mkdir /tmp/repo
 cp *.pkg.tar.zst /tmp/repo
@@ -45,7 +43,7 @@ cd /tmp/repo
 repo-add test-repo.db.tar.gz /tmp/repo/*pkg.tar.zst
 ```
 
-4. Add the temp repo to the pacman.conf file under the specific board-cfg folder. For example, for orangepi 5, go to https://github.com/BredOS/images/tree/main/opi5-image and
+3. Add the temp repo to the pacman.conf file under the specific board-cfg folder. For example, for orangepi 5, go to https://github.com/BredOS/images/tree/main/opi5-image and
 then to <board-cfg>/pacman.conf.aarch64 where <board-cfg> is opi5-image:
 ```ini
 [test-repo]
@@ -53,7 +51,7 @@ SigLevel = Never
 Server = file:///tmp/repo
 ```
 
-Then just build the image using [mkimage](https://github.com/BredOS/mkimage).
+4. Then just build the image using [mkimage](https://github.com/BredOS/mkimage).
 
 ## Building specific images
 Instructions for building in each subfolder.</br>
