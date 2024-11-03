@@ -4,7 +4,7 @@ from time import strftime
 img_version = strftime("%Y-%m-%d")
 edition = "Cinnamon"
 arch = "aarch64"  # aarch64, armv7h, riscv64
-img_name = "BredOS-ARM-radxa-zero3-" + img_version
+img_name = "BredOS-ARM-radxa-zero3e-" + img_version
 install_dir = "arch"
 fs = "btrfs"  # ext4 or btrfs
 img_type = "image"  # image (img.xz) or rootfs (tar.gz) rootfs dont worky yet
@@ -16,9 +16,9 @@ img_backend = "loop"  # loop or qemu-nbd
 cmdline = "rootflags=subvol=@ rootfstype=btrfs rw rootwait console=ttyS2,1500000 console=tty1"
 
 configtxt = """label BredOS ARM
-    kernel /vmlinuz-linux-rockchip-rkr3
-    initrd /initramfs-linux-rockchip-rkr3.img
-    fdtdir /dtbs/rockchip/
+    kernel /vmlinuz-linux-rockchip-mainline
+    initrd /initramfs-linux-rockchip-mainline.img
+    fdt /dtbs/rockchip/rk3566-radxa-zero-3e.dtb
 """
 
 partition_table = lambda img_size, fs: {
@@ -57,7 +57,7 @@ pacstrap_packages(pacman_conf, cfg["packages_file"], cfg["install_dir"])
 machine_id()
 fixperms(cfg["install_dir"])
 copy_skel_to_users()
-logging.info("Partitioning zero3")
+logging.info("Partitioning zero3e")
 rootfs_size = int(
     subprocess.check_output(["du", "-s", "--exclude=proc", cfg["install_dir"]])
     .split()[0]
