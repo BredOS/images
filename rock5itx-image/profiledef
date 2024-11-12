@@ -74,7 +74,8 @@ if not os.path.exists(mnt_dir):
     os.mkdir(mnt_dir)
 subprocess.run("mount " + ldev + "p1 " + mnt_dir + "/boot", shell=True)
 copyfiles(cfg["install_dir"], mnt_dir, retainperms=True)
-create_extlinux_conf(mnt_dir, cfg["configtxt"], cfg["cmdline"], ldev)
+if not cfg["has_uefi"]:
+    create_extlinux_conf(mnt_dir, cfg["configtxt"], cfg["cmdline"], ldev)
 create_fstab(cfg["fs"], ldev)
 unmount(cfg["img_backend"], mnt_dir, ldev)
 cleanup(cfg["img_backend"])
