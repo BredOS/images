@@ -19,8 +19,8 @@ grubcmdl = "console=ttyFIQ0,1500000n8 console=tty1 console=both rw init=/sbin/in
 grubdtb = "dtbs/rockchip/rk3588s-fydetab-duo.dtb"
 
 configtxt = """label BredOS ARM
-    kernel /vmlinuz-linux-fydetab
-    initrd /initramfs-linux-fydetab.img
+    kernel /vmlinuz-linux-rockchip-rkr3
+    initrd /initramfs-linux-rockchip-rkr3.img
     fdt /dtbs/rockchip/rk3588s-fydetab-duo.dtb
 """
 

@@ -19,8 +19,8 @@ omb-skel
 sudo
 polkit
 bluez-utils
-linux-fydetab
-linux-fydetab-headers
+linux-rockchip-rkr3
+linux-rockchip-rkr3-headers
 mesa-panfork-git
 libdrm
 bred-skel-default
