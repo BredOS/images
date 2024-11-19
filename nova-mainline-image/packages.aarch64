@@ -22,7 +22,7 @@ bluez-utils
 #f2fs-tools
 linux-rockchip-mainline
 linux-rockchip-mainline-headers
-mesa
+mesa-panfork-git
 libdrm
 bred-skel-default
 uboot-tools
