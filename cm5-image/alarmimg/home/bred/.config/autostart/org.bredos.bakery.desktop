@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=BredOS Installer
-Exec=Bakery --gui
+Exec=sudo -E Bakery --gui
 Icon=org.bredos.bakery
 Terminal=false
 Type=Application
