@@ -57,7 +57,7 @@ Server = file:///tmp/repo
 Instructions for building in each subfolder.</br>
 Build dependencies:
 ```
-python-prettytable arch-install-scripts grub parted
+python-prettytable arch-install-scripts grub parted gptfdisk edk2-rk3588-devel
 ```
 </br>
 › To build from x86_64, you need to install:
