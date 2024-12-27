@@ -4,7 +4,7 @@ from time import strftime
 img_version = strftime("%Y-%m-%d")
 edition = "Cinnamon"
 arch = "aarch64"  # aarch64, armv7h, riscv64
-img_name = "BredOS-ARM-OPI-BASE-CM5-" + img_version
+img_name = "BredOS-ARM-OPI5-MAX-" + img_version
 install_dir = "arch"
 fs = "btrfs"  # ext4 or btrfs
 img_type = "image"  # image (img.xz) or rootfs (tar.gz) rootfs dont worky yet
@@ -18,7 +18,7 @@ cmdline = "console=ttyFIQ0,1500000n8 console=tty1 console=both loglevel=7 rw pan
 configtxt = """label BredOS ARM
     kernel /vmlinuz-linux-rockchip-rkr3
     initrd /initramfs-linux-rockchip-rkr3.img
-    fdt /dtbs/rockchip/rk3588s-orangepi-cm5.dtb
+    fdt /dtbs/rockchip/rk3588-orangepi-5-max.dtb
 """
 
 partition_table = lambda img_size, fs: {
@@ -57,7 +57,7 @@ pacstrap_packages(pacman_conf, cfg["packages_file"], cfg["install_dir"])
 machine_id()
 fixperms(cfg["install_dir"])
 copy_skel_to_users()
-logging.info("Partitioning Orange Pi CM5")
+logging.info("Partitioning Orange Pi 5 Max")
 rootfs_size = int(
     subprocess.check_output(["du", "-s", "--exclude=proc", cfg["install_dir"]])
     .split()[0]
