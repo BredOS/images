@@ -16,8 +16,8 @@ img_backend = "loop"  # loop or qemu-nbd
 cmdline = "console=ttyFIQ0,1500000n8 console=tty1 console=both loglevel=7 rw panic=10 init=/sbin/init rootflags=subvol=@ rootfstype=btrfs"
 
 configtxt = """label BredOS ARM
-    kernel /vmlinuz-linux-rockchip-rkr3
-    initrd /initramfs-linux-rockchip-rkr3.img
+    kernel /vmlinuz-linux-rockchip-rkr3-sdio
+    initrd /initramfs-linux-rockchip-rkr3-sdio.img
     fdt /dtbs/rockchip/rk3588-orangepi-5-max.dtb
 """
 

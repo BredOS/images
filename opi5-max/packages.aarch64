@@ -20,8 +20,8 @@ sudo
 polkit
 bluez-utils
 #f2fs-tools
-linux-rockchip-rkr3
-linux-rockchip-rkr3-headers
+linux-rockchip-rkr3-sdio
+linux-rockchip-rkr3-sdio-headers
 mesa-panfork-git
 libdrm
 bred-skel-default
