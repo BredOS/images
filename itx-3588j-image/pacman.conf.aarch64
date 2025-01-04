@@ -33,8 +33,8 @@ SigLevel = Required DatabaseOptional
 LocalFileSigLevel = Optional
 # RemoteFileSigLevel = Required
 
-[BredOS-testing]
-Include = /etc/pacman.d/bredos-mirrorlist
+# [BredOS-testing]
+# Include = /etc/pacman.d/bredos-mirrorlist
 
 [BredOS]
 Include = /etc/pacman.d/bredos-mirrorlist
