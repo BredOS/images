@@ -19,9 +19,9 @@ omb-skel
 sudo
 polkit
 bluez-utils
-linux-rockchip-mainline
-linux-rockchip-mainline-headers
-mesa-panfork-git
+linux
+linux-headers
+mesa
 libdrm
 bred-skel-default
 uboot-tools

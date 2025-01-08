@@ -16,8 +16,8 @@ img_backend = "loop"  # loop or qemu-nbd
 cmdline = "rootflags=subvol=@ rootfstype=btrfs rw rootwait console=ttyS2,1500000 console=tty1"
 
 configtxt = """label BredOS ARM
-    kernel /vmlinuz-linux-rockchip-mainline
-    initrd /initramfs-linux-rockchip-mainline.img
+    kernel /vmlinuz-linux
+    initrd /initramfs-linux.img
     fdt /dtbs/rockchip/rk3566-radxa-zero-3e.dtb
 """
 
