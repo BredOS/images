@@ -16,12 +16,12 @@ has_uefi = True
 
 cmdline = "console=ttyFIQ0,1500000n8 console=tty1 console=both loglevel=3 rw panic=10 init=/sbin/init rootflags=subvol=@ rootfstype=btrfs"
 grubcmdl = "console=ttyFIQ0,1500000n8 console=tty1 console=both rw init=/sbin/init"
-grubdtb = "dtbs/rockchip/rk3588-rock-5b-plus.dtb"
+grubdtb = "dtbs/rockchip/rk3588-blueberry-edge-v12-linux.dtb"
 
 configtxt = """label BredOS ARM
     kernel /vmlinuz-linux-rockchip-rkr3
     initrd /initramfs-linux-rockchip-rkr3.img
-    fdt /dtbs/rockchip/rk3588-rock-5b-plus.dtb
+    fdt /dtbs/rockchip/rk3588-blueberry-edge-v12-linux.dtb
 """
 
 partition_table = lambda img_size, fs: {
@@ -65,7 +65,7 @@ pacstrap_packages(pacman_conf, cfg["packages_file"], cfg["install_dir"])
 machine_id()
 fixperms(cfg["install_dir"])
 copy_skel_to_users()
-logging.info("Partitioning rock5bp")
+logging.info("Partitioning r58x")
 rootfs_size = int(
     subprocess.check_output(["du", "-s", "--exclude=proc", cfg["install_dir"]])
     .split()[0]
