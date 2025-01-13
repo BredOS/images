@@ -61,6 +61,7 @@ expect
 gnu-netcat
 bakery
 bakery-gui
+python-psutil
 
 # ===
 # GUI

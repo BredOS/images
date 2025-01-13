@@ -60,6 +60,7 @@ ap6275p-firmware
 gnu-netcat
 bakery
 bakery-gui
+python-psutil
 
 # ===
 # GUI
