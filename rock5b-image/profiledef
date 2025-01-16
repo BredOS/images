@@ -14,8 +14,8 @@ has_uefi = True
 # If you use btrfs you need add `rootflags=subvol=@ rootfstype=btrfs`
 # And remove `rootfstype=ext4`
 
-cmdline = "console=ttyFIQ0,1500000n8 console=tty1 console=both loglevel=7 rw panic=10 init=/sbin/init rootflags=subvol=@ rootfstype=btrfs"
-grubcmdl = "console=ttyFIQ0,1500000n8 console=tty1 console=both rw init=/sbin/init"
+cmdline = "console=ttyFIQ0,1500000n8 console=tty1 console=both loglevel=3 rw panic=10 init=/sbin/init rootflags=subvol=@ rootfstype=btrfs"
+grubcmdl = "loglevel=3 panic=10 console=ttyFIQ0,1500000n8 console=tty1 console=both rw init=/sbin/init"
 grubdtb = "dtbs/rockchip/rk3588-rock-5b.dtb"
 
 configtxt = """label BredOS ARM

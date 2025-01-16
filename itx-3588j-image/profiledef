@@ -15,7 +15,7 @@ has_uefi = True
 # And remove `rootfstype=ext4`
 
 cmdline = "console=ttyS2,115200 console=tty1 console=both loglevel=7 rw panic=10 init=/sbin/init rootflags=subvol=@ rootfstype=btrfs"
-grubcmdl = "console=ttyS2,115200 console=tty1 console=both rw init=/sbin/init"
+grubcmdl = "loglevel=3 panic=10 console=ttyS2,115200 console=tty1 console=both rw init=/sbin/init"
 grubdtb = "dtbs/rockchip/rk3588-firefly-itx-3588j.dtb"
 
 configtxt = """label BredOS ARM

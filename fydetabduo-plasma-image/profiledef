@@ -15,7 +15,7 @@ has_uefi = True
 # And remove `rootfstype=ext4`
 
 cmdline = "console=ttyFIQ0,1500000n8 console=tty1 console=both loglevel=7 rw panic=10 init=/sbin/init rootflags=subvol=@ rootfstype=btrfs"
-grubcmdl = "console=ttyFIQ0,1500000n8 console=tty1 console=both"
+grubcmdl = "loglevel=3 panic=10 console=ttyFIQ0,1500000n8 console=tty1 console=both"
 grubdtb = "dtbs/rockchip/rk3588s-fydetab-duo.dtb"
 
 configtxt = """label BredOS ARM
