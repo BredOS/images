@@ -85,3 +85,5 @@ bredos-multilib
 
 libmd
 libbsd
+bredos-sysreport
+bredos-news

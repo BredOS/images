@@ -89,3 +89,5 @@ bredos-multilib
 grub
 grub-btrfs
 rock-5a-uefi
+bredos-sysreport
+bredos-news

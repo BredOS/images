@@ -88,3 +88,5 @@ bredos-multilib
 
 grub
 grub-btrfs
+bredos-sysreport
+bredos-news

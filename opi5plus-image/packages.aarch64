@@ -89,3 +89,5 @@ bredos-multilib
 grub
 grub-btrfs
 orangepi-5plus-uefi
+bredos-sysreport
+bredos-news

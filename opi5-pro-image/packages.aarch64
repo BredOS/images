@@ -85,3 +85,5 @@ libmd
 libbsd
 bredos-multilib
 opi5pro-post-install
+bredos-sysreport
+bredos-news
