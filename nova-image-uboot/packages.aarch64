@@ -86,3 +86,4 @@ libbsd
 bredos-multilib
 bredos-sysreport
 bredos-news
+pacman-contrib

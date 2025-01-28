@@ -87,3 +87,4 @@ bredos-multilib
 opi-base-cm5-post-install
 bredos-sysreport
 bredos-news
+pacman-contrib

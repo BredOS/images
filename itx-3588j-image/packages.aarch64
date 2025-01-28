@@ -90,3 +90,4 @@ grub
 grub-btrfs
 bredos-sysreport
 bredos-news
+pacman-contrib
