@@ -23,7 +23,6 @@ edge2-post-install
 linux-cix
 linux-cix-headers
 linux-cix-extra
-mesa-panfork-git
 libdrm
 bred-skel-default
 uboot-tools
