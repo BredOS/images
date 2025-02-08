@@ -1,0 +1,146 @@
+# ====
+# CORE
+# ====
+
+base
+base-devel
+yay
+networkmanager
+network-manager-applet
+nano
+lm_sensors
+archlinux-keyring
+archlinuxarm-keyring
+btrfs-progs
+bluez
+bash
+bash-completion
+omb-skel
+sudo
+polkit
+bluez-utils
+edge2-post-install
+linux-cix
+linux-cix-headers
+linux-cix-extra
+mesa-panfork-git
+libdrm
+bred-skel-default
+uboot-tools
+linux-firmware
+linux-firmware-whence
+lsb-release
+xf86-video-fbdev
+xorg-server
+bred-os-release
+parted
+gvfs
+pipewire-pulse
+#pipewire-media-session
+pipewire-alsa
+pipewire-jack
+bredos-keyring
+bredos-logo
+bredos-zram-defaults
+bredos-mirrorlist
+dosfstools
+e2fsprogs
+librewolf-bin
+neofetch
+update-extlinux
+blueman
+cpupower
+less
+lshw
+expect
+
+# ======
+# BAKERY
+# ======
+
+gnu-netcat
+bakery
+bakery-gui
+python-psutil
+
+# ===
+# GUI
+# ===
+
+gdm
+gnome-backgrounds
+# gnome-books
+# gnome-boxes
+gnome-calculator
+gnome-calendar
+gnome-characters
+gnome-clocks
+gnome-color-manager
+gnome-connections
+gnome-console
+gnome-contacts
+gnome-control-center
+gnome-disk-utility
+gnome-font-viewer
+gnome-getting-started-docs
+gnome-keyring
+gnome-logs
+gnome-menus
+gnome-music
+gnome-remote-desktop
+gnome-session
+gnome-settings-daemon
+gnome-shell
+gnome-shell-extensions
+gnome-system-monitor
+gnome-text-editor
+gnome-themes-extra
+gnome-user-docs
+gnome-weather
+gnome-tweaks
+geary
+gnome-notes
+cheese
+seahorse
+vlc
+
+gnome-applets
+gnome-latex
+gnome-panel
+gnome-passwordsafe
+gnome-shell-extension-appindicator
+
+bredos-multilib
+bredos-sysreport
+bredos-news
+pacman-contrib
+
+grub
+mkinitcpio-archiso
+mkinitcpio-nfs-utils
+
+pv
+libbsd
+libmd
+
+# --------------
+# Graphics - AMD
+# --------------
+mesa
+mesa-utils
+# lib32-mesa
+mesa-vdpau
+# lib32-mesa-vdpau
+
+# --------------
+# Graphics - CIX
+# --------------
+mali-G720-firmware
+mesa-cix
+libglvnd-cix
+orion-o6-post-install
+xorg-xwayland-cix
+
+bredos-nohang
+bredos-news
+bredos-sysreport
