@@ -7,13 +7,13 @@ arch = "aarch64"  # aarch64, armv7h, riscv64
 img_name = "edge2-bredos-arm-cinnamon-v" + img_version
 install_dir = "arch"
 fs = "btrfs"  # ext4 or btrfs
-img_type = "image"  # image (img.xz) 
-img_backend = "loop"  # loop 
+img_type = "image"  # image (img.xz)
+img_backend = "loop"  # loop
 
 # If you use btrfs you need add `rootflags=subvol=@ rootfstype=btrfs`
 # And remove `rootfstype=ext4`
 
-cmdline = "${bootargs} console=ttyFIQ0,1500000 console=tty0 console=both irqchip.gicv3_pseudo_nmi=0 lcd_panel=${lcd_panel} fan=${fan_mode} loglevel=3 panic=10 rootwait rw init=/sbin/init rootfstype=btrfs rootflags=subvol=@"
+cmdline = "${bootargs} console=ttyFIQ0,1500000 console=tty0 console=both irqchip.gicv3_pseudo_nmi=0 lcd_panel=${lcd_panel} fan=${fan_mode} rootwait rw init=/sbin/init rootfstype=btrfs rootflags=subvol=@"
 
 configtxt = """label BredOS ARM
     kernel /vmlinuz-linux-rockchip-rkr3

@@ -13,7 +13,7 @@ img_backend = "loop"  # loop or qemu-nbd
 # If you use btrfs you need add `rootflags=subvol=@ rootfstype=btrfs`
 # And remove `rootfstype=ext4`
 
-cmdline = "console=ttyFIQ0,1500000n8 console=tty1 console=both loglevel=3 rw panic=10 rootwait rw init=/sbin/init rootflags=subvol=@ rootfstype=btrfs"
+cmdline = "console=ttyFIQ0,1500000n8 console=tty1 console=both rootwait rw init=/sbin/init rootflags=subvol=@ rootfstype=btrfs"
 
 configtxt = """label BredOS ARM
     kernel /vmlinuz-linux-rockchip-rkr3
