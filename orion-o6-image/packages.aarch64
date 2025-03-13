@@ -19,7 +19,6 @@ omb-skel
 sudo
 polkit
 bluez-utils
-edge2-post-install
 linux-cix
 linux-cix-headers
 linux-cix-extra
@@ -46,7 +45,6 @@ dosfstools
 e2fsprogs
 librewolf-bin
 neofetch
-update-extlinux
 blueman
 cpupower
 less
@@ -65,51 +63,21 @@ python-psutil
 # ===
 # GUI
 # ===
-
-gdm
-gnome-backgrounds
-# gnome-books
-# gnome-boxes
-gnome-calculator
-gnome-calendar
-gnome-characters
-gnome-clocks
-gnome-color-manager
-gnome-connections
-gnome-console
-gnome-contacts
-gnome-control-center
-gnome-disk-utility
-gnome-font-viewer
-gnome-getting-started-docs
-gnome-keyring
-gnome-logs
-gnome-menus
-gnome-music
-gnome-remote-desktop
-gnome-session
-gnome-settings-daemon
-gnome-shell
-gnome-shell-extensions
+cinnamon
+gnome-terminal
+lightdm
+xorg
+hicolor-icon-theme
+lightdm-slick-greeter
+noto-fonts
+gedit
 gnome-system-monitor
-gnome-text-editor
-gnome-themes-extra
-gnome-user-docs
-gnome-weather
-gnome-tweaks
-geary
-gnome-notes
-cheese
-seahorse
-vlc
-
-gnome-applets
-gnome-latex
-gnome-panel
-gnome-passwordsafe
-gnome-shell-extension-appindicator
-
-bredos-multilib
+mint-themes
+mint-y-icons
+# mintlocale
+engrampa
+libmd
+libbsd
 bredos-sysreport
 bredos-news
 pacman-contrib
@@ -136,8 +104,10 @@ mesa-vdpau
 # --------------
 mali-G720-firmware
 mesa-cix
+libmali-cix
 libglvnd-cix
 orion-o6-post-install
+r8126-dkms
 xorg-xwayland-cix
 
 bredos-nohang
