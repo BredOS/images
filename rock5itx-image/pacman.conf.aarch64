@@ -40,13 +40,13 @@ Include = /etc/pacman.d/bredos-mirrorlist
 Include = /etc/pacman.d/bredos-mirrorlist
 
 [core]
-Server = http://dk.mirror.archlinuxarm.org/$arch/$repo
+Server = http://de4.mirror.archlinuxarm.org/$arch/$repo
 
 [extra]
-Server = http://dk.mirror.archlinuxarm.org/$arch/$repo
+Server = http://de4.mirror.archlinuxarm.org/$arch/$repo
 
 [alarm]
-Server = http://dk.mirror.archlinuxarm.org/$arch/$repo
+Server = http://de4.mirror.archlinuxarm.org/$arch/$repo
 
 [aur]
-Server = http://dk.mirror.archlinuxarm.org/$arch/$repo
+Server = http://de4.mirror.archlinuxarm.org/$arch/$repo
