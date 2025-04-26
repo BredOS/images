@@ -87,4 +87,5 @@ bredos-multilib
 opi-base-cm5-post-install
 bredos-sysreport
 bredos-news
+bredos-govctl
 pacman-contrib

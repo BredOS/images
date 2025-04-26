@@ -91,4 +91,5 @@ grub-btrfs
 rock-5b-uefi
 bredos-sysreport
 bredos-news
+bredos-govctl
 pacman-contrib

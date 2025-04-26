@@ -81,4 +81,5 @@ bredos-multilib
 nx5-post-install
 bredos-sysreport
 bredos-news
+bredos-govctl
 pacman-contrib

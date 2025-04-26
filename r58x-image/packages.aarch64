@@ -91,4 +91,5 @@ grub-btrfs
 r58x-uefi
 bredos-sysreport
 bredos-news
+bredos-govctl
 pacman-contrib

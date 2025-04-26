@@ -83,4 +83,5 @@ libmd
 libbsd
 bredos-sysreport
 bredos-news
+bredos-govctl
 pacman-contrib

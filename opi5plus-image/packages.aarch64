@@ -91,4 +91,5 @@ grub-btrfs
 orangepi-5plus-uefi
 bredos-sysreport
 bredos-news
+bredos-govctl
 pacman-contrib

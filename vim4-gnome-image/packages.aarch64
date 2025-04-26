@@ -117,4 +117,5 @@ gnome-passwordsafe
 gnome-shell-extension-appindicator
 bredos-sysreport
 bredos-news
+bredos-govctl
 pacman-contrib
