@@ -114,3 +114,5 @@ bredos-nohang
 bredos-news
 bredos-govctl
 bredos-sysreport
+bredos-sysconfig
+bredos-tools

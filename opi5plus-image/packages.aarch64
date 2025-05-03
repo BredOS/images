@@ -93,3 +93,5 @@ bredos-sysreport
 bredos-news
 bredos-govctl
 pacman-contrib
+bredos-sysconfig
+bredos-tools
