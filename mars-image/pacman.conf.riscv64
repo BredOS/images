@@ -36,11 +36,14 @@ LocalFileSigLevel = Optional
 [BredOS]
 Include = /etc/pacman.d/bredos-mirrorlist
 
+[BredOS-any]
+Include = /etc/pacman.d/bredos-mirrorlist
+
 [core]
-Server = https://mirrors.felixc.at/archriscv/repo/$repo
+Server = https://archriscv.felixc.at/repo/$repo
 
 [extra]
-Server = https://mirrors.felixc.at/archriscv/repo/$repo
+Server = https://archriscv.felixc.at/repo/$repo
 
 [unsupported]
-Server = https://mirrors.felixc.at/archriscv/repo/$repo
+Server = https://archriscv.felixc.at/repo/$repo

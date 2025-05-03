@@ -6,14 +6,14 @@ edition = "Cinnamon"
 arch = "riscv64"  # aarch64, armv7h, riscv64
 img_name = "BredOS-RISCV-mars-" + img_version
 install_dir = "arch"
-fs = "ext4"  # ext4 or btrfs
+fs = "btrfs"  # ext4 or btrfs
 img_type = "image"  # image (img.xz) or rootfs (tar.gz)
 img_backend = "loop"  # loop or qemu-nbd
 
 # If you use btrfs you need add `rootflags=subvol=@ rootfstype=btrfs`
 # And remove `rootfstype=ext4`
 
-cmdline = "rw console=tty0 console=ttyS0,115200 earlycon rootwait stmmaceth=chain_mode:1"
+cmdline = "rw console=tty0 console=ttyS0,115200 earlycon rootwait stmmaceth=chain_mode:1 rootflags=subvol=@ rootfstype=btrfs"
 
 configtxt = """label BredOS Risc-V
     kernel /vmlinuz-linux
