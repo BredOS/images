@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=BredOS Installer
+Exec=sudo -E Bakery --gui
+Icon=org.bredos.bakery
+Terminal=false
+Type=Application
+Categories=GTK;System;Utility;
+StartupNotify=true
+StartupWMClass=org.bredos.bakery
