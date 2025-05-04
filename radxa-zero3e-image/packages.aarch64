@@ -41,6 +41,13 @@ bredos-keyring
 bredos-logo
 bredos-zram-defaults
 bredos-mirrorlist
+bredos-multilib
+bredos-sysreport
+bredos-news
+bredos-govctl
+pacman-contrib
+bredos-sysconfig
+bredos-tools
 dosfstools
 e2fsprogs
 librewolf-bin
