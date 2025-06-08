@@ -47,7 +47,7 @@ bredos-zram-defaults
 bredos-mirrorlist
 dosfstools
 e2fsprogs
-librewolf-bin
+firefox
 neofetch
 # update-extlinux
 blueman

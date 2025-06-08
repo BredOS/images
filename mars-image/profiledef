@@ -9,6 +9,8 @@ install_dir = "arch"
 fs = "btrfs"  # ext4 or btrfs
 img_type = "image"  # image (img.xz) or rootfs (tar.gz)
 img_backend = "loop"  # loop or qemu-nbd
+recreate_part_table = False
+uboot_parts = 2
 
 # If you use btrfs you need add `rootflags=subvol=@ rootfstype=btrfs`
 # And remove `rootfstype=ext4`
@@ -16,21 +18,28 @@ img_backend = "loop"  # loop or qemu-nbd
 cmdline = "rw console=tty0 console=ttyS0,115200 earlycon rootwait stmmaceth=chain_mode:1 rootflags=subvol=@ rootfstype=btrfs"
 
 configtxt = """label BredOS Risc-V
-    kernel /vmlinuz-linux
-    initrd /initramfs-linux.img
-    fdtdir /dtbs/
+    kernel /boot/vmlinuz-linux
+    initrd /boot/initramfs-linux.img
+    fdtdir /boot/dtbs/
 """
 
 partition_table = lambda img_size, fs: {
     "uboot": ["0%", "16M", "16M", "NONE"],
-    "boot": ["16M", "150M", "134M", "fat32"],
-    "primary": ["150M", "100%", str(int(img_size / 1000) - 150) + "M", fs],
+    "boot": ["16M", "256M", "240M", "fat32"],
+    "primary": ["256M", "100%", str(int(img_size / 1000) - (256+16)) + "M", fs],
 }
 
+partition_prefix = lambda config_dir, disk: [
+    ["dd", "if=" + config_dir + "uboot.img", "of=" + disk, "bs=512"],
+    ["partprobe", disk],
+    ["sgdisk", "-e", disk],
+    ["partprobe", disk],
+]
+
 partition_suffix = lambda config_dir, disk: [
-    # ["mkfs.fat", "-v", "-F32", "-n", "BOOT", disk + "p1"],
-    # ["dd", "if=" + config_dir + "idbloader.img", "of=" + disk, "bs=512", "seek=64"],
-    # ["dd", "if=" + config_dir + "u-boot.itb", "of=" + disk, "bs=512", "seek=16384"],
+    ["mkfs.fat", "-v", "-F32", "-n", "BOOT", disk + "p3"],
+    # set part 3 to esp
+    ["parted", "--script", disk, "set", "3", "esp", "on"],
 ]
 
 perms = {
@@ -70,7 +79,7 @@ partition(
 )
 if not os.path.exists(mnt_dir):
     os.mkdir(mnt_dir)
-subprocess.run("mount " + ldev + "p1 " + mnt_dir + "/boot", shell=True)
+subprocess.run("mount " + ldev + "p3 " + mnt_dir + "/boot", shell=True)
 copyfiles(cfg["install_dir"], mnt_dir, retainperms=True)
 create_extlinux_conf(mnt_dir, cfg["configtxt"], cfg["cmdline"], ldev)
 create_fstab(cfg["fs"], ldev)
