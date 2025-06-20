@@ -20,15 +20,12 @@ polkit
 bluez-utils
 mars-post-install
 #f2fs-tools
-linux-jh7110
-linux-jh7110-headers
+linux-ky-x1
+linux-ky-x1-headers
 mesa
-#mesa-panfork-git
 libdrm
 bred-skel-default
 uboot-tools
-#firmware-raspberrypi
-#raspberrypi-bootloader
 linux-firmware
 linux-firmware-whence
 lsb-release
