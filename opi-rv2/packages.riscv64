@@ -20,8 +20,8 @@ polkit
 bluez-utils
 mars-post-install
 #f2fs-tools
-linux-ky-x1
-linux-ky-x1-headers
+linux-spacemit-k1
+linux-spacemit-k1-headers
 mesa
 libdrm
 bred-skel-default
