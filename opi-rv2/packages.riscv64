@@ -53,6 +53,7 @@ less
 lshw
 expect
 u-boot-update
+opi-rv2-post-install
 # ======
 # BAKERY
 # ======
