@@ -21,8 +21,8 @@ polkit
 bluez-utils
 vim4-post-install
 firmware-vim4
-linux-vim4
-linux-vim4-headers
+linux-vim
+linux-vim-headers
 mesa
 libdrm
 # bred-skel-default

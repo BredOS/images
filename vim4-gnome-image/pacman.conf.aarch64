@@ -45,8 +45,3 @@ Server = http://de4.mirror.archlinuxarm.org/$arch/$repo
 [extra]
 Server = http://de4.mirror.archlinuxarm.org/$arch/$repo
 
-[alarm]
-Server = http://de4.mirror.archlinuxarm.org/$arch/$repo
-
-[aur]
-Server = http://de4.mirror.archlinuxarm.org/$arch/$repo
