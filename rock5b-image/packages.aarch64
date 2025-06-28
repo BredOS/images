@@ -23,6 +23,7 @@ rock5b-post-install
 #f2fs-tools
 linux-rockchip-rkr3
 linux-rockchip-rkr3-headers
+dracut
 mesa-panfork-git
 libdrm
 bred-skel-default

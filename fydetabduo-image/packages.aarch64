@@ -21,6 +21,7 @@ polkit
 bluez-utils
 linux-rockchip-rkr3
 linux-rockchip-rkr3-headers
+dracut
 mesa-panfork-git
 libdrm
 bred-skel-default
@@ -84,6 +85,7 @@ libbsd
 bredos-multilib
 grub
 grub-btrfs
+touchegg
 fydetabduo-post-install
 fydetab-duo-uefi
 fydetab-keyd

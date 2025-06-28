@@ -21,6 +21,7 @@ polkit
 bluez-utils
 linux-rockchip-rkr3
 linux-rockchip-rkr3-headers
+dracut
 rock5c-post-install
 mesa-panfork-git
 libdrm
