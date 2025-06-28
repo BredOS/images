@@ -93,8 +93,8 @@ if not os.path.exists(mnt_dir):
     os.mkdir(mnt_dir)
 subprocess.run("mount " + ldev + "p1 " + mnt_dir + "/boot", shell=True)
 copyfiles(cfg["install_dir"], mnt_dir, retainperms=True)
-u_boot_update(mnt_dir, cfg["configtxt"])
 create_fstab(cfg["fs"], ldev)
+u_boot_update(mnt_dir, cfg["configtxt"])
 unmount(cfg["img_backend"], mnt_dir, ldev)
 cleanup(cfg["img_backend"])
 if args.no_compress:
