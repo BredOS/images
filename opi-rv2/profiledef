@@ -9,13 +9,14 @@ install_dir = "arch"
 fs = "btrfs"  # ext4 or btrfs
 img_type = "image"  # image (img.xz) or rootfs (tar.gz)
 img_backend = "loop"  # loop or qemu-nbd
+cmdline = ""
 
 # If you use btrfs you need add `rootflags=subvol=@ rootfstype=btrfs`
 # And remove `rootfstype=ext4`
 
 
 configtxt = """
-## /etc/default/u-boot - configuration file 
+## /etc/default/u-boot - configuration file
 
 U_BOOT_IS_SETUP='true'
 
