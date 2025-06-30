@@ -1,0 +1,120 @@
+{
+    "devices": {
+        "cpi4": {
+            "pretty_name": "Cool Pi 4 Model B",
+            "de": "Cinnamon"
+        },
+        "dtv-cm5": {
+            "pretty_name": "Radxa Rock 5C",
+            "de": "XFCE"
+        },
+        "edge2": {
+            "pretty_name": "Khadas Edge 2",
+            "de": "Cinnamon"
+        },
+        "fydetab": {
+            "pretty_name": "FydeTab Duo",
+            "de": "Cinnamon"
+        },
+        "itx-3588j": {
+            "pretty_name": "ITX-3588J",
+            "de": "Cinnamon"
+        },
+        "nova": {
+            "pretty_name": "Indiedroid Nova",
+            "de": "Cinnamon"
+        },
+        "nova-mainline": {
+            "pretty_name": "Indiedroid Nova (Mainline)",
+            "de": "Cinnamon"
+        },
+        "nx5": {
+            "pretty_name": "Indiedroid Nova",
+            "de": "Cinnamon"
+        },
+        "opi5": {
+            "pretty_name": "Orange Pi 5",
+            "de": "Cinnamon"
+        },
+        "opi5-max": {
+            "pretty_name": "Orange Pi 5 Max",
+            "de": "Cinnamon"
+        },
+        "opi5plus": {
+            "pretty_name": "Orange Pi 5 Plus",
+            "de": "Cinnamon"
+        },
+        "opi5-pro": {
+            "pretty_name": "Orange Pi 5 Pro",
+            "de": "Cinnamon"
+        },
+        "opi5-ultra": {
+            "pretty_name": "Orange Pi 5 Ultra",
+            "de": "Cinnamon"
+        },
+        "opi-cm5": {
+            "pretty_name": "Orange Pi CM5",
+            "de": "Cinnamon"
+        },
+        "orion-o6": {
+            "pretty_name": "Radxa Orion O6",
+            "de": "Gnome"
+        },
+        "r58s": {
+            "pretty_name": "Mekotronics R58S",
+            "de": "Cinnamon"
+        },
+        "r58x-4g": {
+            "pretty_name": "Mekotronics R58X-4G",
+            "de": "Cinnamon"
+        },
+        "r58x": {
+            "pretty_name": "Mekotronics R58X",
+            "de": "Cinnamon"
+        },
+        "r58x-pro": {
+            "pretty_name": "Mekotronics R58X-Pro",
+            "de": "Cinnamon"
+        },
+        "radxa-cm5": {
+            "pretty_name": "Radxa CM5",
+            "de": "Cinnamon"
+        },
+        "radxa-zero3e": {
+            "pretty_name": "Radxa Zero 3E",
+            "de": "Cinnamon"
+        },
+        "rock4c-plus": {
+            "pretty_name": "Radxa Rock 4C Plus",
+            "de": "Cinnamon"
+        },
+        "rock5a": {
+            "pretty_name": "Radxa Rock 5A",
+            "de": "Cinnamon"
+        },
+        "rock5b": {
+            "pretty_name": "Radxa Rock 5B",
+            "de": "Cinnamon"
+        },
+        "rock5bp": {
+            "pretty_name": "Radxa Rock 5B+",
+            "de": "Cinnamon"
+        },
+        "rock5c": {
+            "pretty_name": "Radxa Rock 5C",
+            "de": "Cinnamon"
+        },
+        "rock5d": {
+            "pretty_name": "Radxa Rock 5D",
+            "de": "Cinnamon"
+        },
+        "rock5itx": {
+            "pretty_name": "Radxa Rock 5 ITX",
+            "de": "Cinnamon"
+        },
+        "vim4-gnome": {
+            "pretty_name": "Khadas VIM4",
+            "de": "Gnome"
+        }
+    }
+}
