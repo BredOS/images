@@ -16,7 +16,7 @@
             "pretty_name": "FydeTab Duo",
             "de": "Cinnamon"
         },
-        "itx-3588j": {
+        "itx": {
             "pretty_name": "ITX-3588J",
             "de": "Cinnamon"
         },
@@ -52,7 +52,7 @@
             "pretty_name": "Orange Pi 5 Ultra",
             "de": "Cinnamon"
         },
-        "opi-cm5": {
+        "opi-base-cm5": {
             "pretty_name": "Orange Pi CM5",
             "de": "Cinnamon"
         },
@@ -96,7 +96,7 @@
             "pretty_name": "Radxa Rock 5B",
             "de": "Cinnamon"
         },
-        "rock5bp": {
+        "rock5b-plus": {
             "pretty_name": "Radxa Rock 5B+",
             "de": "Cinnamon"
         },
@@ -112,7 +112,7 @@
             "pretty_name": "Radxa Rock 5 ITX",
             "de": "Cinnamon"
         },
-        "vim4-gnome": {
+        "vim4": {
             "pretty_name": "Khadas VIM4",
             "de": "Gnome"
         }
