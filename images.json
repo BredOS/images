@@ -5,7 +5,7 @@
             "de": "Cinnamon"
         },
         "dtv-cm5": {
-            "pretty_name": "Radxa Rock 5C",
+            "pretty_name": "Radxa CM5 DTV carrier",
             "de": "XFCE"
         },
         "edge2": {
@@ -29,7 +29,7 @@
             "de": "Cinnamon"
         },
         "nx5": {
-            "pretty_name": "Indiedroid Nova",
+            "pretty_name": "Radxa NX5 Kit",
             "de": "Cinnamon"
         },
         "opi5": {
@@ -113,7 +113,7 @@
             "de": "Cinnamon"
         },
         "vim4": {
-            "pretty_name": "Khadas VIM4",
+            "pretty_name": "Khadas VIM 4",
             "de": "Gnome"
         }
     }
