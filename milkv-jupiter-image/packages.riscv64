@@ -53,7 +53,7 @@ less
 lshw
 expect
 u-boot-update
-opi-rv2-post-install
+milkv-jupiter-post-install
 bredos-dracut
 k1-img-gpu
 mesa-pvr-ddk242
