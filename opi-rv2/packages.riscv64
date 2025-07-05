@@ -83,7 +83,6 @@ gnome-contacts
 gnome-control-center
 gnome-disk-utility
 gnome-font-viewer
-gnome-getting-started-docs
 gnome-keyring
 gnome-logs
 # gnome-maps
@@ -110,7 +109,6 @@ vlc
 
 gnome-applets
 # gnome-firmware
-gnome-icon-theme-extras
 # gnome-initial-setup
 gnome-latex
 gnome-panel
