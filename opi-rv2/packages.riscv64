@@ -1,0 +1,80 @@
+# ====
+# CORE
+# ====
+
+base
+base-devel
+yay
+networkmanager
+network-manager-applet
+nano
+lm_sensors
+archlinux-keyring
+btrfs-progs
+bluez
+bash
+bash-completion
+omb-skel
+sudo
+polkit
+bluez-utils
+mars-post-install
+#f2fs-tools
+linux-spacemit-k1
+linux-spacemit-k1-headers
+mesa
+libdrm
+bred-skel-default
+uboot-tools
+linux-firmware
+linux-firmware-whence
+lsb-release
+xf86-video-fbdev
+xorg-server
+bred-os-release
+parted
+gvfs
+pipewire-pulse
+#pipewire-media-session
+pipewire-alsa
+pipewire-jack
+bredos-keyring
+bredos-logo
+bredos-zram-defaults
+bredos-mirrorlist
+dosfstools
+e2fsprogs
+firefox
+neofetch
+# update-extlinux
+blueman
+cpupower
+less
+lshw
+expect
+u-boot-update
+opi-rv2-post-install
+# ======
+# BAKERY
+# ======
+
+gnu-netcat
+#bakery
+#bakery-gui
+
+# ===
+# GUI
+# ===
+cinnamon
+gnome-terminal
+lightdm
+xorg
+hicolor-icon-theme
+lightdm-slick-greeter
+noto-fonts
+gedit
+gnome-system-monitor
+mint-themes
+mint-y-icons
+# mintlocale
+engrampa
