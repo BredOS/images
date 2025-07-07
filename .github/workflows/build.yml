@@ -31,6 +31,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          init-docker
           sudo pacman -Sy --noconfirm --needed \
           python python-prettytable parted btrfs-progs \
           git wget arch-install-scripts unzip gptfdisk xz jq which
@@ -80,6 +81,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          init-docker
           sudo pacman -Sy --noconfirm --needed \
           python python-prettytable parted btrfs-progs \
           git wget arch-install-scripts unzip gptfdisk xz jq edk2-rk3588-devel which
