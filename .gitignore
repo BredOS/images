@@ -1,3 +1,4 @@
 mkimage.log
 /out
 /work
+**/u-boot/

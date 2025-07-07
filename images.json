@@ -56,6 +56,18 @@
             "pretty_name": "Orange Pi CM5",
             "de": "Cinnamon"
         },
+        "opi-rv": {
+            "pretty_name": "Orange Pi RV",
+            "de": "Gnome"
+        },
+        "opi-rv2": {
+            "pretty_name": "Orange Pi RV2",
+            "de": "Gnome"
+        },
+        "opi-r2s": {
+            "pretty_name": "Orange Pi R2S",
+            "de": "None"
+        },
         "orion-o6": {
             "pretty_name": "Radxa Orion O6",
             "de": "Gnome"

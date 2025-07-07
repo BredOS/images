@@ -4,8 +4,62 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: [self-hosted, ARM64, BredOS]
+  build-riscv64:
+    runs-on: ubuntu-latest
+    container:
+      image: bredos/bredos:latest
+      ports:
+        - 80
+      options: --privileged
+
+    strategy:
+      fail-fast: false
+      matrix:
+        image: [opi-rv2, milkv-jupiter-image]
+
+    steps:
+      - name: Checkout Images
+        uses: actions/checkout@v4
+        with:
+          path: images
+
+      - name: Checkout mkimage
+        uses: actions/checkout@v4
+        with:
+          repository: BredOS/mkimage
+          path: mkimage
+
+      - name: Install dependencies
+        run: |
+          sudo pacman -Sy --noconfirm --needed \
+          python python-prettytable parted btrfs-progs \
+          git wget arch-install-scripts unzip gptfdisk xz jq which
+
+      - name: Build Image
+        run: |
+          sudo umount -R ./work/riscv64/* || true
+          sudo rm -rf /var/lib/pacman/db.lck ./out ./work
+          sudo python mkimage/mkimage.py -c images/${{ matrix.image }} -w ./work -o ./out
+
+      - name: Send image to release job
+        run: |
+          scp out/*.img.xz $RELEASE_VM:/images/
+        env:
+          RELEASE_VM: ${{ secrets.RELEASE_VM }}
+
+      - name: Cleanup
+        if: always()
+        run: |
+          sudo umount -R ./work/riscv64/* || true
+          sudo rm -rf ./work ./out
+
+  build-arm:
+    runs-on: ubuntu-24.04-arm
+    container:
+      image: bredos/bredos:latest
+      ports:
+        - 80
+      options: --privileged
 
     strategy:
       fail-fast: false
@@ -50,7 +104,7 @@ jobs:
 
   release:
     if: always()
-    needs: build
+    needs: [build-arm, build-riscv64]
     runs-on: [self-hosted, ARM64, BredOS, emag]
 
     steps:

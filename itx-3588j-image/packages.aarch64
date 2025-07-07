@@ -22,7 +22,7 @@ bluez-utils
 #f2fs-tools
 linux-rockchip-rkr3
 linux-rockchip-rkr3-headers
-dracut
+bredos-dracut
 itx-3588j-post-install
 mesa-panfork-git
 libdrm
