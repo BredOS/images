@@ -23,6 +23,7 @@ linux
 linux-headers
 mesa
 libdrm
+bredos-dracut
 bred-skel-default
 uboot-tools
 linux-firmware
@@ -85,3 +86,4 @@ engrampa
 noto-fonts-cjk
 libmd
 libbsd
+u-boot-update

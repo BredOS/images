@@ -15,10 +15,28 @@ img_backend = "loop"  # loop or qemu-nbd
 
 cmdline = "console=ttyFIQ0,1500000n8 console=tty1 console=both rootwait rw init=/sbin/init rootflags=subvol=@ rootfstype=btrfs"
 
-configtxt = """label BredOS ARM
-    kernel /vmlinuz-linux-rockchip-rkr3
-    initrd /initramfs-linux-rockchip-rkr3.img
-    fdt /dtbs/rockchip/rk3588s-radxa-cm5-rpi-cm4-io.dtb
+configtxt = f"""
+## /etc/default/u-boot - configuration file
+
+U_BOOT_IS_SETUP='true'
+
+#U_BOOT_ALTERNATIVES="default recovery"
+#U_BOOT_DEFAULT="l0"
+#U_BOOT_PROMPT="1"
+#U_BOOT_ENTRIES="all"
+#U_BOOT_MENU_LABEL="BredOS"
+U_BOOT_PARAMETERS="{cmdline}"
+#U_BOOT_ROOT=""
+#U_BOOT_TIMEOUT="50"
+
+# Device tree file (will be searched and copied to /boot if U_BOOT_COPY_DTB_TO_BOOT=true)
+U_BOOT_FDT="rk3588s-radxa-cm5-rpi-cm4-io.dtb"
+
+# Device tree overlays
+#U_BOOT_FDT_OVERLAYS=""
+
+#U_BOOT_SYNC_DTBS="true"
+U_BOOT_COPY_DTB_TO_BOOT="true"
 """
 
 partition_table = lambda img_size, fs: {
@@ -73,8 +91,8 @@ if not os.path.exists(mnt_dir):
     os.mkdir(mnt_dir)
 subprocess.run("mount " + ldev + "p1 " + mnt_dir + "/boot", shell=True)
 copyfiles(cfg["install_dir"], mnt_dir, retainperms=True)
-create_extlinux_conf(mnt_dir, cfg["configtxt"], cfg["cmdline"], ldev)
 create_fstab(cfg["fs"], ldev)
+u_boot_update(mnt_dir, cfg["configtxt"])
 unmount(cfg["img_backend"], mnt_dir, ldev)
 cleanup(cfg["img_backend"])
 if args.no_compress:
