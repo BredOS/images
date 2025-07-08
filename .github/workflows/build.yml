@@ -47,10 +47,13 @@ jobs:
 
       - name: Send image to release job
         run: |
-          scp out/*.img.xz $RELEASE_VM:/images/
+          echo "$SSH_KEY" > /tmp/deploy_key
+          chmod 600 /tmp/deploy_key
+          /usr/bin/scp -i /tmp/deploy_key -o StrictHostKeyChecking=no out/*.img.xz "$RELEASE_VM:/images/"
         env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
           RELEASE_VM: ${{ secrets.RELEASE_VM }}
-
+        
       - name: Cleanup
         if: always()
         run: |
@@ -97,8 +100,11 @@ jobs:
 
       - name: Send image to release job
         run: |
-          scp out/*.img.xz $RELEASE_VM:/images/
+          echo "$SSH_KEY" > /tmp/deploy_key
+          chmod 600 /tmp/deploy_key
+          /usr/bin/scp -i /tmp/deploy_key -o StrictHostKeyChecking=no out/*.img.xz "$RELEASE_VM:/images/"
         env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
           RELEASE_VM: ${{ secrets.RELEASE_VM }}
 
       - name: Cleanup
