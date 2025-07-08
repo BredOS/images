@@ -34,7 +34,7 @@ jobs:
           init-docker
           sudo pacman -Sy --noconfirm --needed \
           python python-prettytable parted btrfs-progs dosfstools \
-          git wget arch-install-scripts unzip gptfdisk xz jq which multipath-tools docker
+          git wget arch-install-scripts unzip gptfdisk xz jq which multipath-tools docker openssh
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -87,7 +87,7 @@ jobs:
           init-docker
           sudo pacman -Sy --noconfirm --needed \
           python python-prettytable parted btrfs-progs dosfstools \
-          git wget arch-install-scripts unzip gptfdisk xz jq edk2-rk3588-devel which multipath-tools
+          git wget arch-install-scripts unzip gptfdisk xz jq edk2-rk3588-devel which multipath-tools openssh
 
       - name: Build Image
         run: |
