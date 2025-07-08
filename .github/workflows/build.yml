@@ -87,7 +87,7 @@ jobs:
           init-docker
           sudo pacman -Sy --noconfirm --needed \
           python python-prettytable parted btrfs-progs dosfstools \
-          git wget arch-install-scripts unzip gptfdisk xz jq edk2-rk3588-devel which
+          git wget arch-install-scripts unzip gptfdisk xz jq edk2-rk3588-devel which multipath-tools
 
       - name: Build Image
         run: |
