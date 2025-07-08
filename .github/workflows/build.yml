@@ -10,7 +10,7 @@ jobs:
       image: bredos/bredos:latest
       ports:
         - 80
-      options: --privileged
+      options: --privileged --cap-add=MKNOD --device=/dev/loop-control:/dev/loop-control --device=/dev/loop0:/dev/loop0 --cap-add SYS_ADMIN
 
     strategy:
       fail-fast: false
@@ -60,7 +60,7 @@ jobs:
       image: bredos/bredos:latest
       ports:
         - 80
-      options: --privileged
+      options:  --privileged --cap-add=MKNOD --device=/dev/loop-control:/dev/loop-control --device=/dev/loop0:/dev/loop0 --cap-add SYS_ADMIN
 
     strategy:
       fail-fast: false
