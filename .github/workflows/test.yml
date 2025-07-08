@@ -1,0 +1,42 @@
+name: Build Images
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: bredos/bredos:latest
+      ports:
+        - 80
+      options: --privileged --cap-add=MKNOD --device=/dev/loop-control:/dev/loop-control --device=/dev/loop0:/dev/loop0 --cap-add SYS_ADMIN
+    steps:
+      - name: Checkout Images
+        uses: actions/checkout@v4
+        with:
+          path: images
+
+      - name: Checkout mkimage
+        uses: actions/checkout@v4
+        with:
+          repository: BredOS/mkimage
+          path: mkimage
+
+      - name: Install dependencies
+        run: |
+          init-docker
+          sudo pacman -Sy --noconfirm --needed \
+          python python-prettytable parted btrfs-progs dosfstools \
+          git wget arch-install-scripts unzip gptfdisk xz jq which
+
+      - name: Build Image
+        run: |
+          #try fallocating 1g img, partitioning it and formatting it
+          losetup -a
+          fallocate -l 1G ./out/test.img
+          LOOP=$(losetup --show -fP ./out/test.img)
+          lsblk -l 
+          sudo parted $LOOP -s mklabel gpt mkpart primary ext4 0% 100% || true
+          sudo mkfs.ext4 -F ${LOOP}p1 || true
+          lsblk -l 
