@@ -18,9 +18,6 @@ jobs:
         image: [opi-rv2, milkv-jupiter-image]
 
     steps:
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-        
       - name: Checkout Images
         uses: actions/checkout@v4
         with:
@@ -37,7 +34,10 @@ jobs:
           init-docker
           sudo pacman -Sy --noconfirm --needed \
           python python-prettytable parted btrfs-progs dosfstools \
-          git wget arch-install-scripts unzip gptfdisk xz jq which multipath-tools
+          git wget arch-install-scripts unzip gptfdisk xz jq which multipath-tools docker
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
       - name: Build Image
         run: |
