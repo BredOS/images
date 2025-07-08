@@ -34,9 +34,9 @@ jobs:
         run: |
           #try fallocating 1g img, partitioning it and formatting it
           losetup -a
-          fallocate -l 1G ./out/test.img
-          LOOP=$(losetup --show -fP ./out/test.img)
-          lsblk -l 
+          fallocate -l 1G /test.img
+          LOOP=$(losetup --show -fP /test.img)
+          lsblk -l
           sudo parted $LOOP -s mklabel gpt mkpart primary ext4 0% 100% || true
           sudo mkfs.ext4 -F ${LOOP}p1 || true
           lsblk -l 
