@@ -40,7 +40,7 @@ jobs:
         run: |
           sudo umount -R ./work/riscv64/* || true
           sudo rm -rf /var/lib/pacman/db.lck ./out ./work
-          sudo python mkimage/mkimage.py -c images/${{ matrix.image }} -w ./work -o ./out
+          sudo python mkimage/mkimage.py -c images/${{ matrix.image }} -w ./work -o ./out --ci
 
       - name: Send image to release job
         run: |
@@ -90,7 +90,7 @@ jobs:
         run: |
           sudo umount -R ./work/aarch64/* || true
           sudo rm -rf /var/lib/pacman/db.lck ./out ./work
-          sudo python mkimage/mkimage.py -c images/${{ matrix.image }} -w ./work -o ./out
+          sudo python mkimage/mkimage.py -c images/${{ matrix.image }} -w ./work -o ./out --ci
 
       - name: Send image to release job
         run: |
