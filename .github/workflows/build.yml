@@ -10,7 +10,7 @@ jobs:
       image: bredos/bredos:latest
       ports:
         - 80
-      options: --privileged
+      options: --privileged --cap-add=MKNOD --device=/dev/loop-control:/dev/loop-control --device=/dev/loop0:/dev/loop0 --cap-add SYS_ADMIN
 
     strategy:
       fail-fast: false
@@ -33,21 +33,29 @@ jobs:
         run: |
           init-docker
           sudo pacman -Sy --noconfirm --needed \
-          python python-prettytable parted btrfs-progs \
-          git wget arch-install-scripts unzip gptfdisk xz jq which
+          python python-prettytable parted btrfs-progs dosfstools \
+          git wget arch-install-scripts unzip gptfdisk xz jq which multipath-tools docker openssh
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
       - name: Build Image
         run: |
           sudo umount -R ./work/riscv64/* || true
           sudo rm -rf /var/lib/pacman/db.lck ./out ./work
-          sudo python mkimage/mkimage.py -c images/${{ matrix.image }} -w ./work -o ./out
+          for i in {1..3}; do
+            sudo python mkimage/mkimage.py -c images/${{ matrix.image }} -w ./work -o ./out --ci && break
+          done
 
       - name: Send image to release job
         run: |
-          scp out/*.img.xz $RELEASE_VM:/images/
+          echo "$SSH_KEY" > /tmp/deploy_key
+          chmod 600 /tmp/deploy_key
+          /usr/bin/scp -i /tmp/deploy_key -o StrictHostKeyChecking=no out/*.img.xz "$RELEASE_VM:/images/"
         env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
           RELEASE_VM: ${{ secrets.RELEASE_VM }}
-
+        
       - name: Cleanup
         if: always()
         run: |
@@ -60,7 +68,7 @@ jobs:
       image: bredos/bredos:latest
       ports:
         - 80
-      options: --privileged
+      options:  --privileged --cap-add=MKNOD --device=/dev/loop-control:/dev/loop-control --device=/dev/loop0:/dev/loop0 --cap-add SYS_ADMIN
 
     strategy:
       fail-fast: false
@@ -83,19 +91,24 @@ jobs:
         run: |
           init-docker
           sudo pacman -Sy --noconfirm --needed \
-          python python-prettytable parted btrfs-progs \
-          git wget arch-install-scripts unzip gptfdisk xz jq edk2-rk3588-devel which
+          python python-prettytable parted btrfs-progs dosfstools \
+          git wget arch-install-scripts unzip gptfdisk xz jq edk2-rk3588-devel which multipath-tools openssh
 
       - name: Build Image
         run: |
           sudo umount -R ./work/aarch64/* || true
           sudo rm -rf /var/lib/pacman/db.lck ./out ./work
-          sudo python mkimage/mkimage.py -c images/${{ matrix.image }} -w ./work -o ./out
+          for i in {1..3}; do
+            sudo python mkimage/mkimage.py -c images/${{ matrix.image }} -w ./work -o ./out --ci && break
+          done
 
       - name: Send image to release job
         run: |
-          scp out/*.img.xz $RELEASE_VM:/images/
+          echo "$SSH_KEY" > /tmp/deploy_key
+          chmod 600 /tmp/deploy_key
+          /usr/bin/scp -i /tmp/deploy_key -o StrictHostKeyChecking=no out/*.img.xz "$RELEASE_VM:/images/"
         env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
           RELEASE_VM: ${{ secrets.RELEASE_VM }}
 
       - name: Cleanup
