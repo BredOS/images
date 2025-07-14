@@ -7,6 +7,7 @@ base-devel
 yay
 networkmanager
 network-manager-applet
+bredos-dracut
 nano
 lm_sensors
 archlinux-keyring
@@ -20,8 +21,8 @@ sudo
 polkit
 bluez-utils
 #f2fs-tools
-linux-rockchip-mainline
-linux-rockchip-mainline-headers
+linux
+linux-headers
 mesa-panfork-git
 libdrm
 bred-skel-default
