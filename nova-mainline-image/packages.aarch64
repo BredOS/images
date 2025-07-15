@@ -21,8 +21,8 @@ sudo
 polkit
 bluez-utils
 #f2fs-tools
-linux
-linux-headers
+linux-rockchip-mainline
+linux-rockchip-mainline-headers
 mesa-panfork-git
 libdrm
 bred-skel-default
