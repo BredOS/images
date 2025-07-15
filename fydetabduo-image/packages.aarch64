@@ -84,7 +84,6 @@ libmd
 libbsd
 bredos-multilib
 grub
-grub-btrfs
 touchegg
 fydetabduo-post-install
 fydetab-duo-uefi

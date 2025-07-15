@@ -87,7 +87,6 @@ libbsd
 bredos-multilib
 
 grub
-grub-btrfs
 indiedroid-nova-uefi
 bredos-sysreport
 bredos-news
