@@ -30,7 +30,7 @@ U_BOOT_PARAMETERS="console=ttyFIQ0,1500000n8 console=tty1 rootwait rw init=/sbin
 #U_BOOT_TIMEOUT="50"
 
 # Device tree file (will be searched and copied to /boot if U_BOOT_COPY_DTB_TO_BOOT=true)
-U_BOOT_FDT="rk3588s-rock-5c.dtb"
+U_BOOT_FDT="rk3588-rock-5t.dtb"
 
 # Device tree overlays
 #U_BOOT_FDT_OVERLAYS=""
