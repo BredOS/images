@@ -54,7 +54,7 @@ lshw
 expect
 u-boot-update
 milkv-jupiter-post-install
-bredos-dracut
+dracut
 k1-img-gpu
 mesa-pvr-ddk242
 # ======

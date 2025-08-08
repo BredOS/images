@@ -7,7 +7,7 @@ base-devel
 yay
 networkmanager
 network-manager-applet
-bredos-dracut
+dracut
 nano
 lm_sensors
 archlinux-keyring

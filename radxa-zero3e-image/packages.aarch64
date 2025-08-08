@@ -23,7 +23,7 @@ linux
 linux-headers
 mesa
 libdrm
-bredos-dracut
+dracut
 bred-skel-default
 uboot-tools
 linux-firmware

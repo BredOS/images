@@ -22,7 +22,7 @@ bluez-utils
 rock5bp-post-install
 linux-rockchip-rkr3
 linux-rockchip-rkr3-headers
-bredos-dracut
+dracut
 mesa-panfork-git
 libdrm
 bred-skel-default

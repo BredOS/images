@@ -54,7 +54,7 @@ lshw
 expect
 u-boot-update
 opi-rv2-post-install
-bredos-dracut
+dracut
 k1-img-gpu
 mesa-pvr-ddk242
 # ======

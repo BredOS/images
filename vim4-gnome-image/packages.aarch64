@@ -52,7 +52,7 @@ less
 lshw
 dnsmasq
 expect
-bredos-dracut
+dracut
 
 # ======
 # BAKERY
