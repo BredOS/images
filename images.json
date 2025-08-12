@@ -120,6 +120,10 @@
             "pretty_name": "Radxa Rock 5D",
             "de": "Cinnamon"
         },
+        "rock5d": {
+            "pretty_name": "Radxa Rock 5T",
+            "de": "Cinnamon"
+        },
         "rock5itx": {
             "pretty_name": "Radxa Rock 5 ITX",
             "de": "Cinnamon"
