@@ -62,6 +62,7 @@ perms = {
     "/etc/sudoers.d": ["0", "0", "750"],
     "/usr/lib": ["0", "0", "755"],
     "/usr/bin": ["0", "0", "755"],
+    "/usr/share": ["0", "0", "755"],
     "/usr": ["0", "0", "755"],
     "/home/bred/.config/autostart/org.bredos.bakery.desktop": ["1001", "1001", "755"],
     "/home/bred/Desktop/org.bredos.bakery.desktop": ["1001", "1001", "755"],
