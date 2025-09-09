@@ -64,6 +64,14 @@
             "pretty_name": "Orange Pi RV2",
             "de": "Gnome"
         },
+        "opi-zero3": {
+            "pretty_name": "Orange Pi Zero 3",
+            "de": "Cinnamon"
+        },
+        "opi-zero-2w": {
+            "pretty_name": "Orange Pi Zero 2W",
+            "de": "Cinnamon"
+        },
         "opi-r2s": {
             "pretty_name": "Orange Pi R2S",
             "de": "None"
