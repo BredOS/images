@@ -48,9 +48,9 @@ partition_table = lambda img_size, fs: {
 partition_suffix = lambda config_dir, disk: [
     ["mkfs.fat", "-v", "-F32", "-n", "BOOT", disk + "p1"],
     ["dd", "if=" + config_dir + "bootinfo_sd.bin", "of=" + disk, "seek=0", "conv=notrunc"],
-    ["dd", "if=" + config_dir + "FSBL.bin", "of=" + disk, "seek=256", "conv=notrunc"],
-    ["dd", "if=" + config_dir + "u-boot-env-default.bin", "of=" + disk, "seek=768", "conv=notrunc"],
-    ["dd", "if=" + config_dir + "u-boot-opensbi.itb", "of=" + disk, "seek=1664", "conv=notrunc"],
+    ["dd", "if=" + config_dir + "FSBL.bin", "of=" + disk, "seek=256", "bs=512", "conv=notrunc"],
+    ["dd", "if=" + config_dir + "u-boot-env-default.bin", "of=" + disk, "seek=768", "bs=512", "conv=notrunc"],
+    ["dd", "if=" + config_dir + "u-boot-opensbi.itb", "of=" + disk, "seek=1664", "bs=512", "conv=notrunc"],
 ]
 
 
@@ -78,7 +78,7 @@ pacstrap_packages(pacman_conf, cfg["packages_file"], cfg["install_dir"])
 machine_id()
 fixperms(cfg["install_dir"])
 copy_skel_to_users()
-logging.info("Partitioning rock5b")
+logging.info("Partitioning rv2")
 rootfs_size = int(
     subprocess.check_output(["du", "-s", "--exclude=proc", cfg["install_dir"]])
     .split()[0]
