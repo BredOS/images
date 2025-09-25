@@ -21,10 +21,10 @@ polkit
 bluez-utils
 opi5plus-post-install
 #f2fs-tools
-linux-rockchip-rkr3
-linux-rockchip-rkr3-headers
+linux
+linux-headers
 dracut
-mesa-panfork-git
+mesa
 libdrm
 bred-skel-default
 uboot-tools

@@ -19,10 +19,10 @@ omb-skel
 sudo
 polkit
 bluez-utils
-linux-rockchip-rkr3
-linux-rockchip-rkr3-headers
+linux
+linux-headers
 dracut
-mesa-panfork-git
+mesa
 libdrm
 bred-skel-default
 uboot-tools

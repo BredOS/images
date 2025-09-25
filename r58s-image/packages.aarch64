@@ -22,10 +22,10 @@ bluez-utils
 r58s-post-install
 ap6275p-firmware
 #f2fs-tools
-linux-rockchip-rkr3
-linux-rockchip-rkr3-headers
+linux
+linux-headers
 dracut
-mesa-panfork-git
+mesa
 libdrm
 bred-skel-default
 uboot-tools
