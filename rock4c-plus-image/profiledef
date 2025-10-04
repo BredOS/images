@@ -24,8 +24,8 @@ configtxt = """label BredOS ARM
 
 partition_table = lambda img_size, fs: {
     "uboot": ["0%", "32Mib", "32Mib", "NONE"],
-    "boot": ["32Mib", "400M", "368Mib", "fat32"],
-    "primary": ["400M", "100%", str(int(img_size / 1000) - 150) + "M", fs],
+    "boot": ["32Mib", "544M", "512Mib", "fat32"],
+    "primary": ["544M", "100%", str(int(img_size / 1000) - 544) + "M", fs],
 }
 
 partition_suffix = lambda config_dir, disk: [

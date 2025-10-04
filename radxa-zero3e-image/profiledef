@@ -41,8 +41,8 @@ U_BOOT_COPY_DTB_TO_BOOT="true"
 
 partition_table = lambda img_size, fs: {
     "uboot": ["0%", "16M", "16M", "NONE"],
-    "boot": ["16M", "300M", "284M", "fat32"],
-    "primary": ["300M", "100%", str(int(img_size / 1000) - 300) + "M", fs],
+    "boot": ["16M", "528M", "512M", "fat32"],
+    "primary": ["528M", "100%", str(int(img_size / 1000) - 528) + "M", fs],
 }
 
 partition_suffix = lambda config_dir, disk: [
