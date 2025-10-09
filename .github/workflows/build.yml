@@ -107,7 +107,8 @@ jobs:
           sudo rm -rf /var/lib/pacman/db.lck ./out ./work
           for i in {1..3}; do
               if [[ "${{ matrix.image }}" == *"mainline"* ]]; then
-                img=${{ matrix.image//-mainline/}}
+                img="${{ matrix.image }}"
+                img="${img//-mainline/}"
               else
                 img=${{ matrix.image }}
               fi
