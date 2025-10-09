@@ -4,7 +4,7 @@ from time import strftime
 img_version = strftime("%Y-%m-%d")
 edition = "Cinnamon"
 arch = "aarch64"  # aarch64, armv7h, riscv64
-img_name = "BredOS-ARM-Rock5A-" + img_version
+img_name = "BredOS-ARM-Rock5A-mainline-" + img_version
 install_dir = "arch"
 fs = "btrfs"  # ext4 or btrfs
 img_type = "image"  # image (img.xz) or rootfs (tar.gz)
