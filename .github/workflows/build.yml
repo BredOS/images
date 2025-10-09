@@ -74,7 +74,7 @@ jobs:
       fail-fast: false
       matrix:
         image: [nova-image, nx5-image, opi5-image, opi5plus-image, r58s-image, r58x-4g-image, r58x-image, r58x-pro-image, rock4c-plus-image, rock5a-image, rock5b-image, rock5bp-image, rock5c-image, rock5d-image, rock5t-image, rock5itx-image, cpi4-image, edge2-cinnamon-image, fydetabduo-image, vim4-gnome-image, dtv-cm5-image, radxa-cm5-image, opi5-max-image, opi5-pro-image, opi5-ultra-image, opi-cm5-image, itx-3588j-image, opi-zero3-image, opi-zero2w-image,
-                nova-image-mainline, opi5-image-mainline, opi5plus-image-mainline, rock5a-image-mainline, rock5b-image-mainline, rock5bp-image-mainline, rock5itx-image-mainline]
+                nova-image-mainline, opi5-image-mainline, opi5plus-image-mainline, opi5-max-image, opi5-ultra-image, rock5a-image-mainline, rock5b-image-mainline, rock5bp-image-mainline, rock5itx-image-mainline]
 
     steps:
       - name: Checkout Images
