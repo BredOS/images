@@ -1,5 +1,0 @@
-#! /bin/sh
-/usr/bin/pacman -Rncsu --noconfirm calamares calamares-conf-rock5b
-/usr/bin/systemctl disable remove-calamares.service
-/usr/bin/rm -rf /usr/lib/systemd/system/remove-calamares.service
-/usr/bin/rm -rf /usr/bin/remove-calamares

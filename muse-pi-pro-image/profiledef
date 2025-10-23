@@ -41,7 +41,7 @@ U_BOOT_FDT="k1-x_MUSE-Pi.dtb"
 U_BOOT_COPY_DTB_TO_BOOT="true"
 """
 
-partition_suffix = lambda config_dir, disk: [
+partition_prefix = lambda config_dir, disk: [
     ["parted", "--script", disk, "--align", "optimal",
      "mklabel", "gpt",
      "mkpart", "fsbl", "128KiB", "384KiB",
@@ -63,7 +63,7 @@ partition_table = lambda img_size, fs: {
 }
 
 partition_suffix = lambda config_dir, disk: [
-    ["mkfs.fat", "-v", "-F32", "-n", "BOOT", disk + "p1"],
+    ["mkfs.fat", "-v", "-F32", "-n", "BOOT", disk + "p5"],
 ]
 
 
@@ -90,7 +90,7 @@ pacstrap_packages(pacman_conf, cfg["packages_file"], cfg["install_dir"])
 machine_id()
 fixperms(cfg["install_dir"])
 copy_skel_to_users()
-logging.info("Partitioning rock5b")
+logging.info("Partitioning musepi")
 rootfs_size = int(
     subprocess.check_output(["du", "-s", "--exclude=proc", cfg["install_dir"]])
     .split()[0]
@@ -104,7 +104,7 @@ partition(
 )
 if not os.path.exists(mnt_dir):
     os.mkdir(mnt_dir)
-subprocess.run("mount " + ldev + "p1 " + mnt_dir + "/boot", shell=True)
+subprocess.run("mount " + ldev + "p5 " + mnt_dir + "/boot", shell=True)
 copyfiles(cfg["install_dir"], mnt_dir, retainperms=True)
 create_fstab(cfg["fs"], ldev)
 u_boot_update(mnt_dir, cfg["configtxt"])
