@@ -96,3 +96,5 @@ bredos-sysconfig
 bredos-tools
 u-boot-update
 xterm
+
+grub
