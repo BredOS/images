@@ -81,6 +81,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: images
+          fetch-depth: 0
 
       - name: Checkout mkimage
         uses: actions/checkout@v4
