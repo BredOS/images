@@ -98,6 +98,7 @@ jobs:
       - name: Change repo mainline
         run: |
           if [[ "${{ matrix.image }}" == *"mainline"* ]]; then
+            cd images
             git checkout mainline
           fi
 
