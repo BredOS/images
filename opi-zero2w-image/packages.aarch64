@@ -22,7 +22,7 @@ bluez-utils
 #f2fs-tools
 linux-h618
 linux-h618-headers
-opi-zero-2w-post-install
+opi-zero2w-post-install
 
 dracut
 libdrm
