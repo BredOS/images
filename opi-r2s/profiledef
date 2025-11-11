@@ -4,7 +4,7 @@ from time import strftime
 img_version = strftime("%Y-%m-%d")
 edition = "gnome"
 arch = "riscv64"  # aarch64, armv7h, riscv64
-img_name = "BredOS-RISCV64-OPI-RV2-" + img_version
+img_name = "BredOS-RISCV64-OPI-R2S-" + img_version
 install_dir = "arch"
 fs = "btrfs"  # ext4 or btrfs
 img_type = "image"  # image (img.xz) or rootfs (tar.gz)
@@ -27,12 +27,12 @@ U_BOOT_IS_SETUP='true'
 #U_BOOT_PROMPT="1"
 #U_BOOT_ENTRIES="all"
 #U_BOOT_MENU_LABEL="BredOS"
-U_BOOT_PARAMETERS="console=ttyS0,115200 console=tty1 rootwait rw init=/sbin/init rootflags=subvol=@ rootfstype=btrfs"
+U_BOOT_PARAMETERS="console=ttyS0,115200 rootwait rw init=/sbin/init rootflags=subvol=@ rootfstype=btrfs"
 #U_BOOT_ROOT=""
 #U_BOOT_TIMEOUT="50"
 
 # Device tree file (will be searched and copied to /boot if U_BOOT_COPY_DTB_TO_BOOT=true)
-U_BOOT_FDT="k1-x_orangepi-rv2.dtb"
+U_BOOT_FDT="x1_orangepi-r2s.dtb"
 
 # Device tree overlays
 #U_BOOT_FDT_OVERLAYS=""

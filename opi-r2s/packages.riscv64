@@ -1,0 +1,59 @@
+# ====
+# CORE
+# ====
+
+base
+base-devel
+yay
+networkmanager
+nano
+lm_sensors
+archlinux-keyring
+btrfs-progs
+bluez
+bash
+bash-completion
+omb-skel
+sudo
+polkit
+bluez-utils
+#f2fs-tools
+linux-spacemit-k1
+linux-spacemit-k1-headers
+bred-skel-default
+uboot-tools
+linux-firmware
+linux-firmware-whence
+lsb-release
+bred-os-release
+parted
+gvfs
+bredos-keyring
+bredos-logo
+bredos-zram-defaults
+bredos-mirrorlist
+dosfstools
+e2fsprogs
+neofetch
+# update-extlinux
+cpupower
+less
+lshw
+expect
+u-boot-update
+opi-rv2-post-install
+dracut
+# ======
+# BAKERY
+# ======
+
+gnu-netcat
+bakery
+bakery-tui
+
+bredos-sysreport
+bredos-news
+bredos-govctl
+pacman-contrib
+bredos-sysconfig
+bredos-tools
