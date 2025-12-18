@@ -2,9 +2,21 @@ name: Build Images
 
 on:
   workflow_dispatch:
+    inputs:
+      build_riscv:
+        description: 'Build RISC-V Images'
+        required: true
+        default: true
+        type: boolean
+      build_arm:
+        description: 'Build ARM Images'
+        required: true
+        default: true
+        type: boolean
 
 jobs:
   build-riscv64:
+    if: ${{ inputs.build_riscv == true }}
     runs-on: ubuntu-latest
     container:
       image: bredos/bredos:latest
@@ -59,7 +71,7 @@ jobs:
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
           RELEASE_VM: ${{ secrets.RELEASE_VM }}
-        
+
       - name: Cleanup
         if: always()
         run: |
@@ -67,6 +79,7 @@ jobs:
           sudo rm -rf ./work ./out
 
   build-arm:
+    if: ${{ inputs.build_arm == true }}
     runs-on: ubuntu-24.04-arm
     container:
       image: bredos/bredos:latest
