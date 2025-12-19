@@ -66,6 +66,7 @@ bcmdhd-sdio-dkms
 gnu-netcat
 bakery
 bakery-gui
+bakery-tui
 python-psutil
 
 # ===

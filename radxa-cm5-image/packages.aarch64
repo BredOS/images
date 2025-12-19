@@ -60,6 +60,7 @@ u-boot-update
 gnu-netcat
 bakery
 bakery-gui
+bakery-tui
 python-psutil
 
 # ===
