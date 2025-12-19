@@ -58,11 +58,13 @@
         },
         "opi-rv": {
             "pretty_name": "Orange Pi RV",
-            "de": "Gnome"
+            "de": "Gnome",
+            "isExperimental": true
         },
         "opi-rv2": {
             "pretty_name": "Orange Pi RV2",
-            "de": "Gnome"
+            "de": "Gnome",
+            "isExperimental": true
         },
         "opi-zero3": {
             "pretty_name": "Orange Pi Zero 3",
@@ -74,7 +76,8 @@
         },
         "opi-r2s": {
             "pretty_name": "Orange Pi R2S",
-            "de": "None"
+            "de": "None",
+            "isExperimental": true
         },
         "orion-o6": {
             "pretty_name": "Radxa Orion O6",
