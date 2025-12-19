@@ -68,6 +68,7 @@ aic8800-dkms
 gnu-netcat
 bakery
 bakery-gui
+bakery-tui
 python-psutil
 
 # ===
