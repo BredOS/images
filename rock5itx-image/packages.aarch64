@@ -91,3 +91,6 @@ pacman-contrib
 bredos-sysconfig
 bredos-tools
 u-boot-update
+xterm
+grub
+rock-5-itx-uefi
