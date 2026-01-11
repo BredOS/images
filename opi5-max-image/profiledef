@@ -28,7 +28,7 @@ partition_table = lambda img_size, fs: {
 }
 
 partition_prefix = lambda config_dir, disk: [
-    ["dd", "if=" + config_dir + "orangepi-5-max_UEFI_Debug_b2b0afd.img", "of=" + disk, "bs=512"],
+    ["dd", "if=/usr/share/edk2/devel/orangepi-5-max/orangepi-5-max_UEFI_Release_latest.img", "of=" + disk, "bs=512"],
     ["partprobe", disk],
     ["sgdisk", "-e", disk],
     ["partprobe", disk],
