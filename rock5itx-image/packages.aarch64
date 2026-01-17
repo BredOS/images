@@ -94,5 +94,5 @@ u-boot-update
 xterm
 grub
 rock-5-itx-uefi
-xdg-open
+xdg-utils
 vulkan-panfrost

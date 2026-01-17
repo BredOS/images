@@ -93,5 +93,5 @@ pacman-contrib
 bredos-sysconfig
 bredos-tools
 u-boot-update
-xdg-open
+xdg-utils
 vulkan-panfrost

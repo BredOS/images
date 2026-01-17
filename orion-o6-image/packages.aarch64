@@ -117,4 +117,4 @@ bredos-govctl
 bredos-sysreport
 bredos-sysconfig
 bredos-tools
-xdg-open
+xdg-utils

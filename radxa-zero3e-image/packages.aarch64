@@ -88,4 +88,4 @@ noto-fonts-cjk
 libmd
 libbsd
 u-boot-update
-xdg-open
+xdg-utils

@@ -89,5 +89,5 @@ bredos-govctl
 pacman-contrib
 bredos-sysconfig
 bredos-tools
-xdg-open
+xdg-utils
 vulkan-panfrost
